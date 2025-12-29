@@ -1,0 +1,73 @@
+.specialCard {
+    height: 439px;
+    width: 265px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    align-self: flex-start;
+    background: #EDEFEE;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.10);
+}
+
+.dishPic {
+    width: 265px;
+    height: 185px;
+    object-fit: cover;
+    border-radius: 16px 16px 0 0;
+    grid-column: 1 / span 2;
+    grid-row: 1 / 1;
+}
+
+.specialCard h2 {
+    font-family: "Markazi Text";
+    font-size: 24px;
+    font-weight: 500;
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+    margin-left: 25px;
+    align-self: center;
+}
+
+.specialCard h3, .specialCard p {
+    font-family: Karla;
+    font-size: 16px;
+    font-weight: 700;
+}
+.specialCard h3  {
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+    color: #EE9972;
+    margin-right: 25px;
+    justify-self: end;
+    align-self: center;
+}
+
+.specialCard h4 {
+    font-family: Karla;
+    font-size: 16px;
+    font-weight: 400;
+    grid-column: 1 / span 2;
+    grid-row: 3 / span 1;
+    margin: 0 25px 0 25px;
+}
+
+.specialCard .order {
+    grid-column: 1 / span 2;
+    grid-row: 4 / span 1;
+    margin: 0 25px 0 25px;
+    align-self: center;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.bell {
+    width: 25px;
+}
+
+
+
+
+
+

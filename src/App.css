@@ -1,9 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* border: 0; */
+}
+
 #root {
+  /* min-width: 900px; */
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 123px 1121px 1168px 417px;
+  grid-template-rows: 92px 1121px 1168px 417px;
   grid-template-areas: "header"
-                       "main"
-                       "aside"
-                       "footer";
+                      "main"
+                      "aside"
+                      "footer";
 }
+
