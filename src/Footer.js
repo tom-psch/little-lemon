@@ -1,9 +1,11 @@
 import classes from "./Footer.module.css"
 import footerPic from "./components/assets/Mario and Adrian A.jpg"
+import { useLogin } from "./LoginContext";
 
 export default function Footer () {
+const {popup} = useLogin();
     return (
-        <footer>
+        <footer className={popup ? "blurred" : ""}>
             <section className={classes.footer}>
                 <img className={classes.footerPic} src={footerPic}></img>
                 <div className={classes.footerRight}>
@@ -36,7 +38,7 @@ export default function Footer () {
                         </ul>
                     </div>
                 </div>
-                <p className={classes.copyright}>© Little Lemon | 2025</p>
+                <p className={classes.copyright}>© Little Lemon | 2026</p>
             </section>
         </footer>
     )

@@ -1,0 +1,78 @@
+#loginBox {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 47.5%;
+    left: 50%;
+    /* right: 50%; */
+    /* width: 200px; */
+    background-color: #FFFFFF;
+    /* justify-self: center; */
+    color: white;
+    opacity: 1;
+    z-index: 1;
+    border-radius: 16px;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 15px;
+}
+#loginBox > * {
+    font-family: Karla;
+    color: #333333;
+}
+/* form > input {
+    font-size: 18px;
+} */
+
+#loginBox > h1 {
+    /* margin-bottom: 10px; */
+    align-self: flex-start;
+    font-size: 28px;
+}
+
+.errors {
+    color: red;
+    font-weight: bold;
+}
+
+.close {
+    width: 15px;
+    grid-column: 2;
+    align-self: center;
+    /* margin-bottom: 10px; */
+}
+.close:hover {
+    cursor: pointer;
+}
+button {
+    background-color: #F4CE14;
+    color: #333333;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 16px;
+    border: 0;
+    padding: 2px;
+    width: 110px;
+    height: 30px;
+    margin: 10px auto 10px auto;
+}
+button:hover {
+    cursor: pointer;
+}
+
+.formType:hover {
+    cursor: pointer;
+}
+
+form {
+    /* margin-top: 10px; */
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+}
+
+form > * {
+    padding: 5px 0;
+}
+.formTitle {
+}

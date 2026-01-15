@@ -1,6 +1,7 @@
 import DishCard from "./DishCard";
 import landingPic from "./components/assets/restauranfood.jpg";
 import classes from './Main.module.css';
+import { useLogin } from "./LoginContext";
 
 var dishes = [{
     pic: "greek salad.jpg",
@@ -22,9 +23,14 @@ var dishes = [{
     link: "https://www.google.com"
 }]
 
+
 export default function Main () {
+
+const {popup} = useLogin();
+// console.log(popup);
+
     return (
-        <main>
+        <main className={popup ? "blurred" : ""}>
             <article className={classes.landing}>
                 <section className={classes.reservation}>
                     <div className={classes.mainHeader}>
@@ -38,7 +44,7 @@ export default function Main () {
             <img className={classes.landingPic} alt="A waitress serving bruchetta" src={landingPic}></img>
             <article className={classes.specials}>
                 <section className={classes.specialsToMenu}>
-                    <h1>This week's specials!</h1>
+                    <h1 id="menu">This week's specials!</h1>
                     <button>Online Menu</button>
                 </section>
                 <section className={classes.specialsCards}>

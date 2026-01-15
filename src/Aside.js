@@ -2,6 +2,8 @@ import RankCard from "./RankCard"
 import classes from "./Aside.module.css"
 import pic1 from "./components/assets/restaurant.jpg"
 import pic2 from "./components/assets/restaurant chef B.jpg"
+import { useLogin } from "./LoginContext"
+import { useState, useEffect} from "react";
 
 
 export default function Aside () {
@@ -35,15 +37,34 @@ const reviews = [{
     stars: 5
 }]
 
+const {popup} = useLogin();
+const [expand, setExpand] = useState (false);
+const [width, setWidth] = useState (window.innerWidth);
+
+useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth != width) {
+                setExpand(false);
+                setWidth(window.innerWidth);
+            }
+        }
+        window.addEventListener("resize", handleResize);
+        return () => {
+     window.removeEventListener("resize", handleResize);
+   };
+},[]);
+
+const handleReadMore = () => setExpand(true);
+
     return (
-        <aside>
+        <aside className={popup ? "blurred" : ""}>
             <section className={classes.testimonials}>
                 <h2>Testimonials</h2>
                 <div className={classes.testimonialCards}>
                     {reviews.map((person, index) => <RankCard person={person} key={index}/>)}
                 </div>
             </section>
-            <section className={classes.about}>
+            <section className={classes.about} id="about">
                 <section className={classes.left}>
                     <div className={classes.aboutHeader}>
                         <h1 className={classes.aboutH1}>Little Lemon</h1>
@@ -54,9 +75,19 @@ const reviews = [{
                         <br/>Drawing on cherished family recipes, they developed the menu and expanded it beyond classic
                         Italian dishes to include a variety of flavors and
                         specialties from across the Mediterranean region.</p>
+                    {!expand ? <>
                     <p className={classes.aboutPSmall} id={classes.aboutPSmall}>Little Lemon is owned by two Italian brothers, Mario and Adrian,
                         who moved to the United States to pursue their shared dream of opening a restaurant.</p>
-                    <a className={classes.readMore} id={classes.readMore}>Read more...</a>
+                    <p className={classes.readMore} id={classes.readMore} onClick={handleReadMore}>Read more...</p>
+                    </>
+                    :
+                     <p className={classes.aboutPSmall} id={classes.aboutPSmall}>Little Lemon is owned by two Italian brothers, Mario and Adrian,
+                        who moved to the United States to pursue their shared dream of opening a restaurant.
+                        <br/>Drawing on cherished family recipes, they developed the menu and expanded it beyond classic
+                        Italian dishes to include a variety of flavors and
+                        specialties from across the Mediterranean region.</p>
+                    }
+                    
                 </section>
                 <section className={classes.right}>
                     <img src={pic1} className={`${classes.photos} ${classes.pic1}`}></img>

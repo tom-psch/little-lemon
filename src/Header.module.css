@@ -48,6 +48,7 @@
     header {
         grid-area: header;
         display: flex;
+        position: relative;
         justify-content: space-between;
         background-color: #FFFFFF;
         padding: 0 20px;
@@ -70,5 +71,62 @@
 
     .burguer {
         height: 30px;
+    }
+
+    .burguer:hover {
+        cursor: pointer;
+    }
+
+    .true {
+        opacity: 50%;
+    }
+
+    .false {
+        opacity: 1;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+    .smallSizeNav .smallNavBar {
+        position: absolute;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-top: 233px;
+        row-gap: 5px;
+        padding: 7px 15px;
+        background-color: #F4CE14;
+        border-radius: 16px;
+        z-index: 1;
+    }
+
+    .open {
+         animation: fadeIn 1s ;
+    }
+    .close {
+         animation: fadeOut 1s ;
+    }
+
+    .smallNavBar a {
+        text-decoration: none;
+        color: #333333;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: Karla;
     }
 }
