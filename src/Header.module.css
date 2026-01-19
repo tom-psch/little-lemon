@@ -84,7 +84,7 @@
     .false {
         opacity: 1;
     }
-    
+
     @keyframes fadeIn {
         from {
             opacity: 0;
@@ -130,3 +130,12 @@
         font-family: Karla;
     }
 }
+
+/* nav .active {
+    color:#F4CE14;
+      text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+} */

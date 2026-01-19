@@ -1,21 +1,23 @@
 import './App.css';
 import Header from './Header';
-import Main from './Main';
-import Aside from './Aside';
-import Footer from './Footer';
-// import {Router, ReactRouter} from "react";
+import Home from './Home';
+import Reservation from './Reservation';
+
+import {Routes, Route, useLocation} from "react-router";
 import { LoginProvider } from './LoginContext';
+
 
 function App() {
   return (
-    <>
-    <LoginProvider>
-        <Header/>
-        <Main/>
-        <Aside/>
-        <Footer/>
-      </LoginProvider>
-    </>
+    <div className={useLocation().pathname=="/" ? "container" : "reservationContainer"}>
+      <LoginProvider>
+          <Header/>
+          <Routes>
+            <Route path="/" element={<Home/>}></Route>
+            <Route path="/reservation" element={<Reservation/>}></Route>
+          </Routes>
+        </LoginProvider>
+    </div>
   );
 }
 

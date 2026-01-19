@@ -175,7 +175,7 @@
         font-size: 64px;
         font-weight: 500;
         line-height: 1;
-        display:block;
+        /* display:block; */
         height: 48px;
         min-width: 290px;
     }
@@ -209,7 +209,7 @@
 
 @media (max-width: 431px) {
     .left {
-        width: 90vw;
+        width: 80vw;
     }
 
     #aboutP {

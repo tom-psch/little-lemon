@@ -1,5 +1,5 @@
 @media (min-width: 900px) {
-    main {
+    .main {
         grid-area: main;
         display: grid;
         grid-template-columns: 1fr 860px 1fr;
@@ -34,7 +34,6 @@
         line-height: 0.5;
     }
     .reservation h2 {
-        /* margin-top: -30px; */
         font-size: 36px;
         font-family: Markazi Text;
         font-weight: normal;
@@ -46,7 +45,7 @@
         color: #EDEFEE;
     }
 
-    main button {
+    .main button {
         background-color: #F4CE14;
         font-size: 18px;
         font-weight: 700;
@@ -58,6 +57,7 @@
     .reservation button {
         width: 170px;
         height: 40px;
+        /* margin-left: 0; */
     }
 
     .landingPic {
@@ -113,13 +113,12 @@
 }
 
 @media (max-width: 899px) {
-    main {
+    .main {
         grid-area: main;
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 406px 715px;
         grid-gap: 2px;
-        /* background-color: #495E57; */
 
     }
 
@@ -129,18 +128,15 @@
         display: flex;
         justify-content: space-between;
         padding: 0 20px;
-        /* grid-template-columns: 1fr 860px 1fr; */
         background-color: #495E57;
     }
 
     .reservation {
         grid-column: 1;
         grid-row: 1;
-        /* justify-self: start; */
         align-self: center;
         display: flex;
         flex-direction: column;
-        /* width: 326px; */
         width: 70vw;
         height: 311px;
         justify-content: space-between;
@@ -155,7 +151,6 @@
         min-width: 290px;
     }
     .reservation h2 {
-        /* margin-top: -30px; */
         font-size: 36px;
         font-family: Markazi Text;
         font-weight: normal;
@@ -167,9 +162,8 @@
         color: #EDEFEE;
     }
 
-    main button {
+    .main button {
         background-color: #F4CE14;
-        /* font-size: clamp(1px,3vw,18px); */
         font-size: 18px;
         font-weight: 700;
         font-family: Karla;
@@ -192,12 +186,9 @@
         object-fit: cover;
         border-radius: 16px 0 0 16px;
         justify-self: end;
-        /* padding: 0 20px; */
-        /* z-index: 1; */
     }
 
     .specials {
-        /* z-index: -1; */
         grid-column: 1;
         grid-row: 2;
         background-color: rgb(237,239,238,.25);
@@ -228,7 +219,6 @@
         height: 46px;
         margin-right: 30px;
         color: #333333;
-        /* display:none; */
     }
 
     .specialsCards {
@@ -236,18 +226,8 @@
         grid-row: 2;
         display: grid;
         grid-template-columns: repeat(3, 300px);
-        /* grid-gap: 20px; */
         justify-content: space-between;
         overflow: scroll;
         justify-items: center;
-        /* justify-content: center; */
-        /* align-items: center; */
-        /* margin-top: -40px; */
     }
 }
-/* 
-@media (max-width: 400px) {
-     .specialsToMenu h1 {
-        font-size: 15vw;
-    }
-} */

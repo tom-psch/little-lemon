@@ -2,6 +2,9 @@ import DishCard from "./DishCard";
 import landingPic from "./components/assets/restauranfood.jpg";
 import classes from './Main.module.css';
 import { useLogin } from "./LoginContext";
+import { useEffect, useRef } from "react";
+
+export default function Main () {
 
 var dishes = [{
     pic: "greek salad.jpg",
@@ -23,14 +26,10 @@ var dishes = [{
     link: "https://www.google.com"
 }]
 
-
-export default function Main () {
-
 const {popup} = useLogin();
-// console.log(popup);
 
     return (
-        <main className={popup ? "blurred" : ""}>
+        <main className={popup ? `${classes.main} blurred` : classes.main}>
             <article className={classes.landing}>
                 <section className={classes.reservation}>
                     <div className={classes.mainHeader}>
@@ -56,4 +55,5 @@ const {popup} = useLogin();
         </main>
     )
 }
+
 

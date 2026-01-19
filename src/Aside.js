@@ -56,6 +56,11 @@ useEffect(() => {
 
 const handleReadMore = () => setExpand(true);
 
+// const {scrollRefs} = useScroll();
+// const aboutRef = useRef();
+
+// scrollRefs.current["about"] = aboutRef;
+
     return (
         <aside className={popup ? "blurred" : ""}>
             <section className={classes.testimonials}>
@@ -87,7 +92,6 @@ const handleReadMore = () => setExpand(true);
                         Italian dishes to include a variety of flavors and
                         specialties from across the Mediterranean region.</p>
                     }
-                    
                 </section>
                 <section className={classes.right}>
                     <img src={pic1} className={`${classes.photos} ${classes.pic1}`}></img>

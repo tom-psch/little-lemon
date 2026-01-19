@@ -1,5 +1,5 @@
 import Nav from './Nav';
-import logo from './components/assets/Logo.svg';
+import logo from './components/assets/logo2.png';
 import classes from './Header.module.css';
 
 export default function Header () {

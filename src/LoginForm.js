@@ -39,7 +39,7 @@ validationSchema: object({
     password: string().required("Required").min(8,"At least 8 characeters"),
   }),
 });
-
+const phoneRegExp = /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/
 const formikNew = useFormik({
 initialValues: {
     email: "",
@@ -54,7 +54,7 @@ onSubmit: values => {
 validationSchema: object({
     email: string().email("Invalid email").required("Required"),
     address: string().required("Required").min(10, "Invalid address"),
-    phone: number().required("Required").min(9, "Invalid phone number"),
+    phone: string().matches(phoneRegExp, 'Phone number is not valid'),
     password: string().required("Required").min(8,"At least 8 characeters"),
   }),
 });
@@ -107,7 +107,7 @@ const handleClick = () => setPopup(false);
                 <label htmlFor="phone">Phone number</label>
                 <input
                     id="phone"
-                    type="number"
+                    type="text"
                     {...formikNew.getFieldProps('phone')}
                 />
                 {formikNew.touched.phone && formikNew.errors.phone ? <p className={classes.errors}>{formikNew.errors.phone}</p> : <></>}

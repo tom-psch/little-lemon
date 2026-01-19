@@ -3,6 +3,8 @@ import burguer from "./components/assets/🦆 icon _hamburger menu.svg"
 import { useState, useEffect } from 'react';
 import { useLogin } from './LoginContext';
 import LoginForm from './LoginForm';
+import { NavLink } from 'react-router';
+import { HashLink } from 'react-router-hash-link';
 
 export default function Nav () {
     const [nav,setNav] = useState(false);
@@ -19,7 +21,6 @@ export default function Nav () {
     }, []);
 
     const {popup, setPopup} = useLogin();
-    // console.log(popup);
 
     const loginClick = (e) => {
         e.preventDefault();
@@ -32,10 +33,10 @@ export default function Nav () {
             {popup ? <LoginForm/> : <></>}
             <nav className={classes.fullSizeNav}>
                 <ul className={classes.navbar}>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#menu">Menu</a></li>
-                    <li><a href="/">Reservations</a></li>
+                    <li><NavLink to="/">Home</NavLink></li>
+                    <li><HashLink smooth to="/#about">About</HashLink></li>
+                    <li><HashLink smooth to="/#menu">Menu</HashLink></li>
+                    <li><NavLink to="/reservation">Reservations</NavLink></li>
                     <li><a href="/">Order Online</a></li>
                     <li><a href="/" onClick={loginClick}>Login</a></li>
                 </ul>
@@ -44,10 +45,10 @@ export default function Nav () {
                 <img src={burguer} alt="Hamburguer navigation-bar icon" className={`${classes.burguer} ${classes[nav]}`} onClick={handleClick}></img>
             {nav ?
                 <ul className={`${classes.smallNavBar} ${classes[nav ? "open" : "close"]}`}>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="/">Menu</a></li>
-                    <li><a href="/">Reservations</a></li>
+                    <li><NavLink to="/" onClick={handleClick}>Home</NavLink></li>
+                    <li><HashLink smooth to="/#about">About</HashLink></li>
+                    <li><HashLink smooth to="/#menu">Menu</HashLink></li>
+                    <li><NavLink to="/reservation" onClick={handleClick}>Reservations</NavLink></li>
                     <li><a href="/">Order Online</a></li>
                     <li><a href="/" onClick={loginClick}>Login</a></li>
                 </ul>

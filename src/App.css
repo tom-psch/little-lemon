@@ -3,8 +3,7 @@
   padding: 0;
 }
 
-#root {
-  /* min-width: 900px; */
+.container {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 92px 1121px 1168px 417px;
@@ -14,6 +13,18 @@
                       "footer";
 }
 
+.reservationContainer {
+  overflow: scroll;
+  scrollbar-gutter: stable;
+  display: grid;
+  height: 100dvh;
+  grid-template-columns: 1fr;
+  grid-template-rows: 92px auto;
+  grid-template-areas: "header"
+                      "main";
+}
+
 .blurred {
   opacity: 0.60;
+  pointer-events: none;
 }

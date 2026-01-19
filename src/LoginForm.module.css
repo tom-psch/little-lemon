@@ -3,10 +3,7 @@
     transform: translate(-50%, -50%);
     top: 47.5%;
     left: 50%;
-    /* right: 50%; */
-    /* width: 200px; */
     background-color: #FFFFFF;
-    /* justify-self: center; */
     color: white;
     opacity: 1;
     z-index: 1;
@@ -20,12 +17,8 @@
     font-family: Karla;
     color: #333333;
 }
-/* form > input {
-    font-size: 18px;
-} */
 
 #loginBox > h1 {
-    /* margin-bottom: 10px; */
     align-self: flex-start;
     font-size: 28px;
 }
@@ -39,12 +32,11 @@
     width: 15px;
     grid-column: 2;
     align-self: center;
-    /* margin-bottom: 10px; */
 }
 .close:hover {
     cursor: pointer;
 }
-button {
+#loginBox button {
     background-color: #F4CE14;
     color: #333333;
     font-size: 16px;
@@ -56,7 +48,7 @@ button {
     height: 30px;
     margin: 10px auto 10px auto;
 }
-button:hover {
+#loginBox button:hover {
     cursor: pointer;
 }
 
@@ -64,15 +56,12 @@ button:hover {
     cursor: pointer;
 }
 
-form {
-    /* margin-top: 10px; */
+#loginBox form {
     grid-column: span 2;
     display: flex;
     flex-direction: column;
 }
 
-form > * {
+#loginBox form > * {
     padding: 5px 0;
-}
-.formTitle {
 }
