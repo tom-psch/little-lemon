@@ -107,7 +107,6 @@
         grid-row: 1;
         display: flex;
         justify-content: space-between;
-        /* height: 214px; */
         align-self: center;
         margin: 20px;
 
@@ -117,11 +116,9 @@
         color: #EDEFEE;
         font-family: Karla;
         font-size: clamp(10px, 4vw, 20px);
-        /* font-size: 5vw; */
         font-weight: 500;
         text-decoration: none;
         line-height: 26px;
-        /* display:none; */
 
     }
 
@@ -157,4 +154,12 @@
     #socials {
         justify-content: flex-start;
     }
+}
+
+footer a {
+    text-decoration-color: transparent;
+    transition: text-decoration 0.5s;
+}
+footer a:hover {
+    text-decoration: underline #F4CE14;
 }

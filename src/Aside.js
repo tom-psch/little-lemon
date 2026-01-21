@@ -3,10 +3,7 @@ import classes from "./Aside.module.css"
 import pic1 from "./components/assets/restaurant.jpg"
 import pic2 from "./components/assets/restaurant chef B.jpg"
 import { useLogin } from "./LoginContext"
-import { useState, useEffect} from "react";
-
-
-export default function Aside () {
+import { useState, useEffect, useRef} from "react";
 
 const reviews = [{
     img: "joseph.jpg",
@@ -37,68 +34,65 @@ const reviews = [{
     stars: 5
 }]
 
-const {popup} = useLogin();
-const [expand, setExpand] = useState (false);
-const [width, setWidth] = useState (window.innerWidth);
+export default function Aside () {
 
-useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth != width) {
-                setExpand(false);
-                setWidth(window.innerWidth);
+    const {popup} = useLogin();
+    const [expand, setExpand] = useState (false);
+    const width = useRef (window.innerWidth);
+
+    useEffect(() => {
+            const handleResize = () => {
+                if (window.innerWidth != width.current) {
+                    expand && setExpand(false);
+                }
             }
-        }
-        window.addEventListener("resize", handleResize);
-        return () => {
-     window.removeEventListener("resize", handleResize);
-   };
-},[]);
+            window.addEventListener("resize", handleResize);
+            return () => {
+        window.removeEventListener("resize", handleResize);
+    };
+    },[expand]);
 
-const handleReadMore = () => setExpand(true);
+    const handleReadMore = () => setExpand(true);
 
-// const {scrollRefs} = useScroll();
-// const aboutRef = useRef();
-
-// scrollRefs.current["about"] = aboutRef;
-
-    return (
-        <aside className={popup ? "blurred" : ""}>
-            <section className={classes.testimonials}>
-                <h2>Testimonials</h2>
-                <div className={classes.testimonialCards}>
-                    {reviews.map((person, index) => <RankCard person={person} key={index}/>)}
-                </div>
-            </section>
-            <section className={classes.about} id="about">
-                <section className={classes.left}>
-                    <div className={classes.aboutHeader}>
-                        <h1 className={classes.aboutH1}>Little Lemon</h1>
-                        <h2 className={classes.aboutH2}>Chicago</h2>
+        return (
+            <aside className={popup ? "blurred" : ""}>
+                <section className={classes.testimonials}>
+                    <h2>Testimonials</h2>
+                    <div className={classes.testimonialCards}>
+                        {reviews.map((person, index) => <RankCard person={person} key={index}/>)}
                     </div>
-                    <p className={classes.aboutP} id={classes.aboutP}>Little Lemon is owned by two Italian brothers, Mario and Adrian,
-                        who moved to the United States to pursue their shared dream of opening a restaurant.
-                        <br/>Drawing on cherished family recipes, they developed the menu and expanded it beyond classic
-                        Italian dishes to include a variety of flavors and
-                        specialties from across the Mediterranean region.</p>
-                    {!expand ? <>
-                    <p className={classes.aboutPSmall} id={classes.aboutPSmall}>Little Lemon is owned by two Italian brothers, Mario and Adrian,
-                        who moved to the United States to pursue their shared dream of opening a restaurant.</p>
-                    <p className={classes.readMore} id={classes.readMore} onClick={handleReadMore}>Read more...</p>
-                    </>
-                    :
-                     <p className={classes.aboutPSmall} id={classes.aboutPSmall}>Little Lemon is owned by two Italian brothers, Mario and Adrian,
-                        who moved to the United States to pursue their shared dream of opening a restaurant.
-                        <br/>Drawing on cherished family recipes, they developed the menu and expanded it beyond classic
-                        Italian dishes to include a variety of flavors and
-                        specialties from across the Mediterranean region.</p>
-                    }
                 </section>
-                <section className={classes.right}>
-                    <img src={pic1} className={`${classes.photos} ${classes.pic1}`}></img>
-                    <img src={pic2} className={`${classes.photos} ${classes.pic2}`}></img>
+                <section className={classes.about} id="about">
+                    <section className={classes.left}>
+                        <div className={classes.aboutHeader}>
+                            <h1 className={classes.aboutH1}>Little Lemon</h1>
+                            <h2 className={classes.aboutH2}>Chicago</h2>
+                        </div>
+                        <p className={classes.aboutP} id={classes.aboutP}>Little Lemon is owned by two Italian brothers, Mario and Adrian,
+                            who moved to the United States to pursue their shared dream of opening a restaurant.
+                            <br/>Drawing on cherished family recipes, they developed the menu and expanded it beyond classic
+                            Italian dishes to include a variety of flavors and
+                            specialties from across the Mediterranean region.</p>
+                        {!expand ? <>
+                        <p className={classes.aboutPSmall} id={classes.aboutPSmall}>Little Lemon is owned by two Italian brothers, Mario and Adrian,
+                            who moved to the United States to pursue their shared dream of opening a restaurant.</p>
+                        <p className={classes.readMore} id={classes.readMore} onClick={handleReadMore}>Read more...</p>
+                        </>
+                        :
+                        <p className={classes.aboutPSmall} id={classes.aboutPSmall}>Little Lemon is owned by two Italian brothers, Mario and Adrian,
+                            who moved to the United States to pursue their shared dream of opening a restaurant.
+                            <br/>Drawing on cherished family recipes, they developed the menu and expanded it beyond classic
+                            Italian dishes to include a variety of flavors and
+                            specialties from across the Mediterranean region.</p>
+                        }
+                    </section>
+                    <section className={classes.right}>
+                        <img src={pic1} className={`${classes.photos} ${classes.pic1}`}></img>
+                        <img src={pic2} className={`${classes.photos} ${classes.pic2}`}></img>
+                    </section>
                 </section>
-            </section>
-        </aside>
-    )
+            </aside>
+        )
 }
+
 

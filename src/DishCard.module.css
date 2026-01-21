@@ -8,8 +8,9 @@
     background: #EDEFEE;
     border-radius: 16px 16px 0 0;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.10);
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s;
+    transform: scale(1);
 }
-
 .dishPic {
     width: 265px;
     height: 185px;
@@ -18,7 +19,6 @@
     grid-column: 1 / span 2;
     grid-row: 1 / 1;
 }
-
 .specialCard h2 {
     font-family: "Markazi Text";
     font-size: 24px;
@@ -28,7 +28,6 @@
     margin-left: 25px;
     align-self: center;
 }
-
 .specialCard h3, .specialCard p {
     font-family: Karla;
     font-size: 16px;
@@ -42,7 +41,6 @@
     justify-self: end;
     align-self: center;
 }
-
 .specialCard h4 {
     font-family: Karla;
     font-size: 16px;
@@ -51,8 +49,7 @@
     grid-row: 3 / span 1;
     margin: 0 25px 0 25px;
 }
-
-.specialCard .order {
+.order {
     grid-column: 1 / span 2;
     grid-row: 4 / span 1;
     margin: 0 25px 0 25px;
@@ -62,10 +59,22 @@
     gap: 10px;
 }
 
+.specialCard:hover {
+    /* transform: scale(1.02); */
+    transform: translateY(-3px);
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.20);
+}
+
+.order:hover{
+    cursor: pointer;
+
+}
+.order *:hover {
+    text-decoration: underline;
+}
 .bell {
     width: 25px;
 }
-
 
 
 

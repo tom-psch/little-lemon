@@ -1,0 +1,49 @@
+.main {
+    background-color: #495E57;
+    display: grid;
+}
+
+@media (max-width: 899px) {
+    .main {
+       grid-template-rows: auto 1fr;
+    }
+}
+@media (min-width: 900px) {
+    .main {
+       grid-template-rows: auto 1fr;
+       grid-template-columns: 1fr 860px 1fr;
+    }
+    .main h1 {
+        grid-column: 2 / span 1;
+        grid-row: 1;
+    }
+    .main .orderOnline {
+        grid-column: 2 / span 1;
+        grid-row: 2;
+    }
+}
+
+.main h1 {
+    font-size: 58px;
+    font-family: Markazi Text;
+    color: #F4CE14;
+    font-weight: normal;
+    margin: 20px 20px;
+}
+
+.orderOnline {
+    font-family: Markazi Text;
+    font-size: 15px;
+    color: #FFFFFF;
+    font-weight: normal;
+    margin: 20px 20px;
+}
+.orderOnline h2 {
+    text-decoration-color: transparent;
+    transition: text-decoration 0.5s;
+}
+
+.main h2:hover{
+    text-decoration: underline #F4CE14;
+}
+

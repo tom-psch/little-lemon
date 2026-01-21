@@ -2,7 +2,6 @@ import DishCard from "./DishCard";
 import landingPic from "./components/assets/restauranfood.jpg";
 import classes from './Main.module.css';
 import { useLogin } from "./LoginContext";
-import { useEffect, useRef } from "react";
 
 export default function Main () {
 

@@ -1,87 +1,96 @@
+aside {
+    grid-area: aside;
+    display: grid;
+}
+.testimonials {
+    background-color: rgb(251,218,187,.70);
+    justify-content: center;
+    display: grid;
+}
+.testimonials h2 {
+    font-family: Markazi text;
+    font-weight: 400;
+    color: #333333;
+    align-self: center;
+    justify-self: center;
+}
+.testimonialCards {
+        display: flex;
+}
+.about {
+    background-color: rgb(237,239,238,.25);
+    display: grid;
+    grid-template-rows: 1fr;
+}
+.left {
+    align-self: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.aboutH1 {
+    color: #495E57;
+    font-family: "Markazi Text";
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 1;
+}
+.aboutH2 {
+    color: #EE9972;
+    font-family: "Markazi Text";
+    font-size: 40px;
+    font-weight: 400;
+    line-height: normal;
+}
+.aboutP {
+    color: #000;
+    text-align: justify;
+    font-family: Karla;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+.aboutP {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+.aboutPSmall {
+    display: none;
+}
+.readMore {
+    display: none;
+}
+
 @media (min-width: 900px) {
     aside {
-        grid-area: aside;
-        display: grid;
         grid-template-columns: 1fr 860px 1fr;
         grid-template-rows: 587px 587fr;
     }
-
     .testimonials {
-        background-color: rgb(251,218,187,.70);
-        justify-content: center;
         grid-column: 1 / span 3;
         grid-row: 1 / span 1;
-        display: grid;
     }
-
     .testimonials h2 {
         font-size: 64px;
-        font-family: Markazi text;
-        font-weight: 400;
-        color: #333333;
-        align-self: center;
-        justify-self: center;
     }
-
     .testimonialCards {
-        display: flex;
         width: 860px;
         justify-content: space-between;
     }
-
     .about {
-        background-color: rgb(237,239,238,.25);
-        display: grid;
         grid-template-columns: 1fr 860px 1fr;
-        grid-template-rows: 1fr;
         grid-column: 1 / span 3;
         grid-row: 2 / span 1;
-        /* justify-content: center; */
     }
-
     .left {
         grid-row: 1 / span 1;
         grid-column: 2 / span 1;
         width: 370px;
         height: 445px;
-        align-self: center;
-        /* align-content: start; */
-        /* justify-self: start; */
-        display:flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    .aboutH1 {
-        color: #495E57;
-        font-family: "Markazi Text";
-        font-size: 64px;
-        font-weight: 500;
-        line-height: 1;
     }
     .aboutH2 {
-        color: #EE9972;
-        font-family: "Markazi Text";
-        font-size: 40px;
-        font-weight: 400;
-        line-height: normal;
         margin-top: -10px;
-    }
-
-    .aboutP {
-        color: #000;
-        text-align: justify;
-        font-family: Karla;
-        font-size: 20px;
-        font-weight: 500;
-        line-height: 1.5;
-    }
-
-    .aboutPSmall {
-        display: none;
-    }
-
-    .readMore {
-        display: none;
     }
 
     .right {
@@ -92,18 +101,17 @@
         grid-row: 1 / span 1;
         align-self: center;
         justify-self: end;
-
     }
-
     .pic1 {
         grid-column: 1 / span 2;
         grid-row: 2 / span 1;
         align-self: end;
+        z-index: 1;
     }
-
     .pic2 {
         grid-column: 2 / span 2;
         grid-row: 2 / span 1;
+        z-index: 2;
     }
     .photos {
         width: 276px;
@@ -111,99 +119,50 @@
         object-fit: cover;
         border-radius: 16px;
         box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.10);
+        transition: transform 0.5s;
+    }
+    .pic1:hover {
+        transform: rotate(-5deg)
+    }
+    .pic2:hover {
+        transform: rotate(5deg)
     }
 }
 
 @media (max-width: 899px) {
     aside {
-        grid-area: aside;
-        display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 587px 587fr;
     }
-
     .testimonials {
-        background-color: rgb(251,218,187,.70);
-        justify-content: center;
         grid-column: 1;
         grid-row: 1;
-        display: grid;
     }
-
     .testimonials h2 {
         font-size: clamp(40px,30vw,64px);
-        /* font-size: 64px; */
-        font-family: Markazi text;
-        font-weight: 400;
-        color: #333333;
-        align-self: center;
-        justify-self: center;
     }
-
     .testimonialCards {
-        display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
-        /* overflow: scroll; */
     }
-
     .about {
-        background-color: rgb(237,239,238,.25);
-        display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr;
         grid-column: 1;
         grid-row: 2;
         padding: 20px;
     }
-
     .left {
         grid-row: 1;
         grid-column: 1;
         width: clamp(100px,70vw,700px);
         height: 445px;
-        align-self: center;
-        /* align-content: start; */
-        /* justify-self: start; */
-        display:flex;
-        flex-direction: column;
-        justify-content: space-between;
     }
     .aboutH1 {
-        color: #495E57;
-        font-family: "Markazi Text";
-        font-size: 64px;
-        font-weight: 500;
-        line-height: 1;
-        /* display:block; */
         height: 48px;
         min-width: 290px;
     }
-    .aboutH2 {
-        color: #EE9972;
-        font-family: "Markazi Text";
-        font-size: 40px;
-        font-weight: 400;
-        line-height: normal;
-        /* margin-top: -50px; */
-        /* flex: none; */
-    }
-    .aboutP {
-        color: #000;
-        text-align: justify;
-        font-family: Karla;
-        font-size: 20px;
-        font-weight: 500;
-        line-height: 1.5;
-    }
-    .aboutPSmall {
-        display: none;
-    }
-    .readMore {
-        display: none;
-    }
     .right {
-        display: none; /* ACA TENIA GRID */
+        display: none;
     }
 }
 
@@ -211,11 +170,9 @@
     .left {
         width: 80vw;
     }
-
     #aboutP {
         display: none;
     }
-
     #aboutPSmall {
         display: block;
         color: #000;
@@ -224,7 +181,6 @@
         font-size: 20px;
         font-weight: 500;
         line-height: 1.5;
-        /* width: 100%; */
     }
     #readMore {
         display: block;

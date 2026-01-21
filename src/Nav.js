@@ -1,10 +1,11 @@
 import classes from './Header.module.css';
-import burguer from "./components/assets/🦆 icon _hamburger menu.svg"
+import burguer from "./components/assets/icon _hamburger menu.svg"
 import { useState, useEffect } from 'react';
 import { useLogin } from './LoginContext';
 import LoginForm from './LoginForm';
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 import { HashLink } from 'react-router-hash-link';
+import { useLocation } from 'react-router';
 
 export default function Nav () {
     const [nav,setNav] = useState(false);
@@ -37,8 +38,8 @@ export default function Nav () {
                     <li><HashLink smooth to="/#about">About</HashLink></li>
                     <li><HashLink smooth to="/#menu">Menu</HashLink></li>
                     <li><NavLink to="/reservation">Reservations</NavLink></li>
-                    <li><a href="/">Order Online</a></li>
-                    <li><a href="/" onClick={loginClick}>Login</a></li>
+                    <li><NavLink to="/order">Order Online</NavLink></li>
+                    <li><NavLink to="/" onClick={loginClick}>Login</NavLink></li>
                 </ul>
             </nav>
             <nav className={classes.smallSizeNav} onVolumeChange={handleClick}>
@@ -49,8 +50,8 @@ export default function Nav () {
                     <li><HashLink smooth to="/#about">About</HashLink></li>
                     <li><HashLink smooth to="/#menu">Menu</HashLink></li>
                     <li><NavLink to="/reservation" onClick={handleClick}>Reservations</NavLink></li>
-                    <li><a href="/">Order Online</a></li>
-                    <li><a href="/" onClick={loginClick}>Login</a></li>
+                    <li><NavLink to="/order" onClick={handleClick}>Order Online</NavLink></li>
+                    <li><NavLink to="/" onClick={loginClick}>Login</NavLink></li>
                 </ul>
                 :
                 <></>

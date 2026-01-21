@@ -69,10 +69,11 @@
         object-fit: cover;
         border-radius: 16px;
         margin-top: 23px;
+        z-index: 1;
     }
 
     .specials {
-        z-index: -1;
+        /* z-index: -1; */
         grid-column: 1 / span 3;
         grid-row: 2 / span 2;
         background-color: rgb(237,239,238,.25);

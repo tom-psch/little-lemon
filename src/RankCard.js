@@ -5,7 +5,7 @@ export default function RankCard (props) {
     let stars= [];
     let i = props.person.stars;
     while (i >0 ) {
-        stars = [...stars,<img className={classes.star} src={star} key={i}></img>];
+        stars = [...stars,<img className={classes.star} src={star} key={i} alt="Ranking star"></img>];
         i--;
     }
     let a = props.person.img;

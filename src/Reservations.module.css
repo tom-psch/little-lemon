@@ -1,7 +1,6 @@
 .main {
     background-color: #495E57;
     display: grid;
-    /* overflow: scroll; */
 }
 
 @media (max-width: 899px) {
@@ -39,13 +38,11 @@
     color: #F4CE14;
     font-weight: normal;
     margin: 20px 20px;
-    /* line-height: 0.5; */
 }
 
 .errors {
     color: red;
     font-weight: bold;
-    /* margin: -10px 0 5px 0px; */
 }
 
 .main button {
@@ -55,10 +52,8 @@
     font-weight: 700;
     border-radius: 16px;
     border: 0;
-    /* padding: 2px; */
     width: 190px;
     height: 30px;
-    /* margin: 10px auto 10px auto; */
     align-self: center;
 }
 .main button:hover {
@@ -74,7 +69,6 @@
     border-radius: 16px;
     border: 0;
     padding: 0 7px;
-    /* margin: 5px 0 10px 0; */
 }
 
 .dateTime {
@@ -82,5 +76,8 @@
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 5px;
-    /* border: none; */
+}
+
+.timeSelect {
+    width: 70px;
 }
