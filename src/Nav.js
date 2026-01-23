@@ -3,9 +3,8 @@ import burguer from "./components/assets/icon _hamburger menu.svg"
 import { useState, useEffect } from 'react';
 import { useLogin } from './LoginContext';
 import LoginForm from './LoginForm';
-import { NavLink, useNavigate } from 'react-router';
+import { NavLink } from 'react-router';
 import { HashLink } from 'react-router-hash-link';
-import { useLocation } from 'react-router';
 
 export default function Nav () {
     const [nav,setNav] = useState(false);

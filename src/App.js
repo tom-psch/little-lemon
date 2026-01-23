@@ -3,16 +3,16 @@ import Header from './Header';
 import Home from './Home';
 import Reservation from './Reservation';
 import OrderOnline from './OrderOnline';
-import { useReducer, useState } from 'react';
+import { useReducer } from 'react';
 import {Routes, Route, useLocation} from "react-router";
 import { LoginProvider } from './LoginContext';
 
-function updateTimes (state, action) {
+export function updateTimes (state, action) {
 let newState = state;
   switch (action.type) {
     case "selected_day_time": {
-      const weekdayIndex = state.findIndex(weekday => weekday.day == action.day);
-      const timeIndex = state[weekdayIndex].times.findIndex(times => times.time == action.time);
+      const weekdayIndex = state.findIndex(weekday => weekday.day === action.day);
+      const timeIndex = state[weekdayIndex].times.findIndex(times => times.time === action.time);
 
       newState[weekdayIndex].times[timeIndex].available = false;
       return newState;
@@ -20,10 +20,13 @@ let newState = state;
     case "canceled_reservation": {
       return state;
     }
+    default: {
+      console.log("No action provided");
+    }
   }
 };
 
-const initialTimes = [{
+export const initializeTimes = () => [{
   day: "Mon., Jan. 19th, 2026",
   times: [{time: "16:00", available: true},
     {time: "17:00", available: true},
@@ -62,10 +65,10 @@ const initialTimes = [{
 ];
 
 function App() {
-const [state, dispatch] = useReducer(updateTimes,initialTimes);
+const [state, dispatch] = useReducer(updateTimes,initializeTimes());
 
   return (
-    <div className={useLocation().pathname=="/" ? "container" : "reservationContainer"}>
+    <div className={useLocation().pathname==="/" ? "container" : "reservationContainer"}>
       <LoginProvider>
           <Header/>
           <Routes>

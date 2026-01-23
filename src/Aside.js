@@ -42,7 +42,7 @@ export default function Aside () {
 
     useEffect(() => {
             const handleResize = () => {
-                if (window.innerWidth != width.current) {
+                if (window.innerWidth !== width.current) {
                     expand && setExpand(false);
                 }
             }
@@ -87,8 +87,8 @@ export default function Aside () {
                         }
                     </section>
                     <section className={classes.right}>
-                        <img src={pic1} className={`${classes.photos} ${classes.pic1}`}></img>
-                        <img src={pic2} className={`${classes.photos} ${classes.pic2}`}></img>
+                        <img src={pic1} className={`${classes.photos} ${classes.pic1}`} alt="Little Lemon's Deck"></img>
+                        <img src={pic2} className={`${classes.photos} ${classes.pic2}`} alt="Cooking chef"></img>
                     </section>
                 </section>
             </aside>

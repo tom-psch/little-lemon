@@ -1,26 +1,26 @@
 import classes from "./Reservations.module.css"
-import { object, string, number, date, InferType } from 'yup';
+import { object, string, number } from 'yup';
 import { useFormik } from "formik";
 import { useLogin } from "./LoginContext";
 import { useState } from "react";
 
 export default function Reservation (props) {
-const {popup, setPopup} = useLogin();
+const {popup} = useLogin();
 const phoneRegExp = /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
 
-const [selectedDay,setSelectedDay] = useState("");
+const [ ,setSelectedDay] = useState("");
 const [selectedTimes,setSelectedTimes] = useState([]);
+const [submissionStatus,setSubmissionStatus] = useState(false);
 
 const availableTimes = props.availableTimes;
 
 function handleDaySelection (e) {
     formik.handleChange(e);
     setSelectedDay(e.target.value);
-    setSelectedTimes(availableTimes.filter(day => day.day == e.target.value)[0].times);
+    setSelectedTimes(availableTimes.filter(day => day.day === e.target.value)[0].times);
     formik.setFieldValue("timeSel","");
     formik.setFieldTouched("timeSel",false);
 }
-
 
 const formik = useFormik({
 initialValues: {
@@ -32,14 +32,18 @@ initialValues: {
     people: "1",
     cancel: false,
   },
-onSubmit: (values,{resetForm}) => {
+onSubmit: async (values,{resetForm}) => {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     resetForm();
     props.dispatch({
         type: "selected_day_time",
         day: formik.values.daySel,
         time: formik.values.timeSel,
     });
-    alert(JSON.stringify(values, null, 2));
+    setSubmissionStatus(true);
+    // alert(JSON.stringify(values, null, 2)); //FORM DATA SENDING
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+    setSubmissionStatus(false);
   },
 validationSchema: object({
     daySel: string().required("Required"),
@@ -66,7 +70,9 @@ validationSchema: object({
                 {formik.touched.phone && formik.errors.phone ? <p className={classes.errors}>{formik.errors.phone}</p> : <></>}
 
                  <fieldset className={classes.dateTime}>
-                    <legend>Date and time of booking</legend>
+                    <legend>When are you coming?</legend>
+                    <label htmlFor="daySel" className={classes.dateLabel}>Date</label>
+                    <label htmlFor="timeSel" className={classes.timeLabel}>Time</label>
                     <select id="daySel" {...formik.getFieldProps('daySel')} onChange={handleDaySelection}>
                         <option hidden></option>
                         {availableTimes.map((day, index) => <option key={index}>{day.day}</option>)}
@@ -99,9 +105,12 @@ validationSchema: object({
                     {formik.touched.cancel && formik.errors.cancel ? <p className={classes.errors}>{formik.errors.cancel}</p> : <></>}
                 </div>
 
-                <button type="submit">Complete reservation</button>
+                <button type="submit"
+                /*disabled={!formik.isValid || !formik.dirty} className={(!formik.isValid || !formik.dirty) ? classes.disabled : ""} */
+                >Complete reservation</button>
 
             </form>
+            {submissionStatus && <div className={classes.formSubmission}>Your booking was successful!</div>}
         </main>
     )
 };

@@ -18,7 +18,7 @@ const handleHome = () => window.scrollTo({top:0,behavior:"smooth"});
     return (
         <footer className={popup ? "blurred" : ""}>
             <section className={classes.footer}>
-                <img className={classes.footerPic} src={footerPic}></img>
+                <img className={classes.footerPic} src={footerPic} alt="Mario and Adrian in Little Lemon's kitchen"></img>
                 <div className={classes.footerRight}>
                     <div className={classes.doormatNav}>
                         <h4 className={classes.title}>Little Lemon</h4>

@@ -3,7 +3,6 @@ import logo from './components/assets/logo2.png';
 import arrow from "./components/assets/to-the-top.png"
 import classes from './Header.module.css';
 import { useInView } from 'react-intersection-observer';
-import { HashLink } from "react-router-hash-link";
 import { NavLink, useLocation } from 'react-router';
 
 
@@ -16,8 +15,7 @@ const handleHome = () => window.scrollTo({top:0,behavior:"smooth"});
             <img className={classes.headerLogo} alt="Little Lemon's logo" src={logo}></img>
             <Nav />
         </header>
-        {useLocation().pathname=="/" &&
-            // <HashLink to="/" onClick={handleHome}> ACA HABÏA HASHLINK
+        {useLocation().pathname==="/" &&
             <NavLink to="/" onClick={handleHome}>
                 <img src={arrow} className={inView ? `${classes.backToTop} ${classes.hidden}` : `${classes.backToTop} ${classes.shown}`} alt="Back to top arrow"/>
             </NavLink>
