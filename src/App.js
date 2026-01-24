@@ -31,7 +31,6 @@ function App() {
       const submission = submitAPI(values);
       if (submission) {
         navigate("/confirmation");
-        // await new Promise(() => setTimeout(()=>navigate("/"), 3000));
       }
     }
 
