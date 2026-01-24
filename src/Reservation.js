@@ -1,23 +1,29 @@
 import classes from "./Reservations.module.css"
-import { object, string, number } from 'yup';
+import { object, string, number, date } from 'yup';
 import { useFormik } from "formik";
 import { useLogin } from "./LoginContext";
 import { useState } from "react";
-import { submitAPI } from "./api/bookingApi";
 
 export default function Reservation ({availableTimes, dispatch, submitForm}) {
 const {popup} = useLogin();
 const phoneRegExp = /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
 
-const [selectedDay,setSelectedDay] = useState(new Date().toISOString().split('T')[0]);
+const selectedDay = new Date().toISOString().split('T')[0];
 
 function handleDaySelection (e) {
     formik.handleChange(e);
-    setSelectedDay(e.target.value);
-    dispatch({
-        type: "selected_day",
-        day: formik.values.daySel,
-    });
+    if (e.target.value === "") {
+        dispatch({
+            type: "erased_day",
+        });
+    }
+    else {
+        dispatch({
+            type: "selected_day",
+            day: e.target.value,
+        });
+        formik.setFieldValue("timeSel","hh:mm");
+    }
 }
 
 const formik = useFormik({
@@ -32,7 +38,8 @@ initialValues: {
   },
 onSubmit: submitForm,
 validationSchema: object({
-    timeSel: string().required("Required"),
+    daySel: date().required("Required"),
+    timeSel: string().required("Required").test({name:"Can't be default", message: "Must select time", test: (value) => value!="hh:mm"}),
     name: string().min(3, "Invalid name").required("Required").matches(/^[^0-9]+$/, "Numbers are not allowed in this field"),
     phone: string().matches(phoneRegExp, 'Phone number is not valid').required("Required"),
     occasion: string().required("Required"),
@@ -40,6 +47,7 @@ validationSchema: object({
     cancel: string().required().oneOf(["true"],"Please agree to continue"),
   }),
 });
+
     return (
         <main className={!popup ? classes.main : `${classes.main} blurred`}>
             <h1>Reserve a table</h1>
@@ -60,11 +68,11 @@ validationSchema: object({
                     <input type="date" id="daySel" data-testid="daySel" {...formik.getFieldProps('daySel')} min={new Date().toISOString().split('T')[0]} onChange={handleDaySelection} className={classes.daySelect}>
                     </input>
                     <select id="timeSel" className={classes.timeSelect} data-testid="timeSel"{...formik.getFieldProps('timeSel')}>
-                        <option hidden></option>
-                        {availableTimes.map((time, index) => <option key={index}>{time}</option>)}
+                        <option hidden>hh:mm</option>
+                        {availableTimes!== "" && availableTimes.map((time, index) => <option key={index}>{time}</option>)}
                     </select>
 
-                    {(formik.touched.daySel && formik.errors.daySel) || (formik.touched.timeSel && formik.errors.timeSel) ? <p className={classes.errors}>Required time and date</p> : <></>}
+                    {(formik.touched.daySel && formik.errors.daySel) || (formik.touched.timeSel && formik.errors.timeSel) ? <p className={classes.errors}>Required date and time</p> : <></>}
                 </fieldset>
 
                 <label htmlFor="occasion">Occasion</label>
@@ -87,8 +95,8 @@ validationSchema: object({
                     {formik.touched.cancel && formik.errors.cancel ? <p className={classes.errors}>{formik.errors.cancel}</p> : <></>}
                 </div>
 
-                <button type="submit" disabled={formik.isSubmitting}
-                className={formik.isSubmitting ? classes.disabled : ""}
+                <button type="submit" disabled={!formik.isValid || formik.isSubmitting || !formik.dirty }
+                className={(!formik.isValid || formik.isSubmitting || !formik.dirty) ? classes.disabled : ""}
                 >Complete reservation</button>
 
             </form>

@@ -85,6 +85,14 @@ button.disabled:hover {
     flex-wrap: wrap;
     padding: 5px;
 }
+.dateSelect {
+    /* flex-basis: 1; */
+}
+
+.timeSelect {
+    /* width: 60px; */
+    /* flex-basis: 2; */
+}
 
 main div.formSubmission {
     position: absolute;
