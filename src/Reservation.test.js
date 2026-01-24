@@ -3,57 +3,33 @@ import Reservation from "./Reservation";
 import { LoginProvider } from './LoginContext';
 import userEvent from "@testing-library/user-event";
 import { act } from "@testing-library/react";
+import { initializeTimes } from "./App";
 
-const testingArray = [{
-  day: "Mon., Jan. 19th, 2026",
-  times: [{time: "16:00", available: true},
-    {time: "17:00", available: true},
-    {time: "18:00", available: false},
-    {time: "19:00", available: true},
-    {time: "20:00", available: false}]
-},
-{ day: "Tue., Jan. 20th, 2026",
-  times: [{time: "16:00", available: false},
-    {time: "17:00", available: true},
-    {time: "18:00", available: false},
-    {time: "19:00", available: false},
-    {time: "20:00", available: true}]
-}];
+const testingArray = initializeTimes();
 
 const dispatch = jest.fn();
+const formSubmit = jest.fn();
 
-// beforeEach(() => {
-//     render(
-//     <LoginProvider>
-//         <Reservation availableTimes={testingArray} dispatch={dispatch}/>
-//     </LoginProvider>
-//     );
-// })
 
 describe("Reservation Form", () => {
+
+    beforeEach(() => {
+        render(
+        <LoginProvider>
+            <Reservation availableTimes={testingArray} dispatch={dispatch} submitForm={formSubmit}/>
+        </LoginProvider>
+        );
+    })
 test("Renders the Reservation heading", () => {
-    render(
-    <LoginProvider>
-        <Reservation availableTimes={testingArray} dispatch={dispatch}/>
-    </LoginProvider>
-    );
     const headingElement = screen.getByText("Reserve a table");
     expect(headingElement).toBeInTheDocument();
 });
 
 test("Form fields render on screen", () => {
-    act(() => {
-        render(
-        <LoginProvider>
-            <Reservation availableTimes={testingArray} dispatch={dispatch}/>
-        </LoginProvider>
-        );
-    })
-
     const name = screen.getByLabelText("Name");
     const phone = screen.getByLabelText("Phone number");
-    const day = screen.getByLabelText(/daTe/i);
-    const time = screen.getByLabelText(/time/i);
+    const day = screen.getByTestId("daySel");
+    const time = screen.getByTestId("timeSel");
     const ocassion = screen.getByLabelText(/occasion/i);
     const people = screen.getByLabelText(/number of people/i);
     const cancel = screen.getByLabelText(/policy/i);
@@ -70,43 +46,38 @@ test("Form fields render on screen", () => {
 });
 
 test("User can submit form", async () => {
-    act(() => {
-        render(
-        <LoginProvider>
-            <Reservation availableTimes={testingArray} dispatch={dispatch}/>
-        </LoginProvider>
-        );
-    });
-
     const name = screen.getByLabelText("Name");
     const phone = screen.getByLabelText("Phone number");
-    const day = screen.getByLabelText(/daTe/i);
-    const time = screen.getByLabelText(/time/i);
+    const day = screen.getByTestId("daySel");
+    const time = screen.getByTestId("timeSel");
     const ocassion = screen.getByLabelText(/occasion/i);
     const people = screen.getByLabelText(/number of people/i);
     const cancel = screen.getByLabelText(/policy/i);
     const submit = screen.getByRole("button",/complete/i);
 
+    const selectedDay = new Date().toISOString().split("T")[0];
 
     await act(() => {
         userEvent.type(name, "Tom");
         userEvent.type(phone, "1231231231");
-        userEvent.selectOptions(day,["Tue., Jan. 20th, 2026"]);
-        userEvent.selectOptions(time,["17:00"]);
+        userEvent.type(day,selectedDay);
+        userEvent.selectOptions(time, testingArray[2]);
         userEvent.selectOptions(ocassion,["Birthday"]);
         userEvent.type(people,"{backspace}5");
         userEvent.click(cancel);
         userEvent.click(submit);
     });
 
-    await act(()=>new Promise((resolve) => setTimeout(resolve, 2000)));
-    await act(()=>expect(dispatch).toHaveBeenCalled());
-    await act(()=>expect(dispatch).toHaveBeenCalledWith({
-        type: "selected_day_time",
-        day: "Tue., Jan. 20th, 2026",
-        time: "17:00",
-    }));
-    expect(screen.getByText("Your booking was successful!")).toBeInTheDocument();
-    expect(name).toHaveValue("");
+    const values = {
+    daySel: selectedDay,
+    timeSel: testingArray[2],
+    name: "Tom",
+    phone: "1231231231",
+    occasion: "birthday",
+    people: 5,
+    cancel: true,
+    }
+
+    expect(formSubmit).toHaveBeenCalledWith(values, expect.any(Object));
 });
 });

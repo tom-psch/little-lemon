@@ -3,22 +3,18 @@ import Header from './Header';
 import Home from './Home';
 import Reservation from './Reservation';
 import OrderOnline from './OrderOnline';
-import { useReducer } from 'react';
-import {Routes, Route, useLocation} from "react-router";
+import ConfirmedBooking from './ConfirmedBooking';
+import { useReducer} from 'react';
+import { Routes, Route, useLocation, useNavigate } from "react-router";
 import { LoginProvider } from './LoginContext';
+import { fetchAPI, submitAPI } from './api/bookingApi';
+
+export const initializeTimes = () => fetchAPI(new Date());
 
 export function updateTimes (state, action) {
-let newState = state;
   switch (action.type) {
-    case "selected_day_time": {
-      const weekdayIndex = state.findIndex(weekday => weekday.day === action.day);
-      const timeIndex = state[weekdayIndex].times.findIndex(times => times.time === action.time);
-
-      newState[weekdayIndex].times[timeIndex].available = false;
-      return newState;
-    } //implement next case with login verification (with back-end)
-    case "canceled_reservation": {
-      return state;
+    case "selected_day": {
+      return fetchAPI(action.day);
     }
     default: {
       console.log("No action provided");
@@ -26,46 +22,18 @@ let newState = state;
   }
 };
 
-export const initializeTimes = () => [{
-  day: "Mon., Jan. 19th, 2026",
-  times: [{time: "16:00", available: true},
-    {time: "17:00", available: true},
-    {time: "18:00", available: false},
-    {time: "19:00", available: true},
-    {time: "20:00", available: false}]
-},
-{ day: "Tue., Jan. 20th, 2026",
-  times: [{time: "16:00", available: false},
-    {time: "17:00", available: true},
-    {time: "18:00", available: false},
-    {time: "19:00", available: false},
-    {time: "20:00", available: true}]
-},
-{ day: "Wed., Jan. 21th, 2026",
-  times: [{time: "16:00", available: true},
-    {time: "17:00", available: true},
-    {time: "18:00", available: false},
-    {time: "19:00", available: true},
-    {time: "20:00", available: false}]
-},
-{ day: "Thu., Jan. 22th, 2026",
-  times: [{time: "16:00", available: true},
-    {time: "17:00", available: true},
-    {time: "18:00", available: true},
-    {time: "19:00", available: false},
-    {time: "20:00", available: true}]
-},
-{ day: "Fri., Jan. 23th, 2026",
-  times: [{time: "16:00", available: true},
-    {time: "17:00", available: true},
-    {time: "18:00", available: true},
-    {time: "19:00", available: true},
-    {time: "20:00", available: true}]
-}
-];
-
 function App() {
-const [state, dispatch] = useReducer(updateTimes,initializeTimes());
+  const [state, dispatch] = useReducer(updateTimes,initializeTimes());
+  let navigate = useNavigate();
+
+  async function handleSubmit (values) {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const submission = submitAPI(values);
+      if (submission) {
+        navigate("/confirmation");
+        // await new Promise(() => setTimeout(()=>navigate("/"), 3000));
+      }
+    }
 
   return (
     <div className={useLocation().pathname==="/" ? "container" : "reservationContainer"}>
@@ -73,7 +41,8 @@ const [state, dispatch] = useReducer(updateTimes,initializeTimes());
           <Header/>
           <Routes>
             <Route path="/" element={<Home/>}></Route>
-            <Route path="/reservation" element={<Reservation availableTimes={state} dispatch={dispatch}/>}></Route>
+            <Route path="/reservation" element={<Reservation availableTimes={state} dispatch={dispatch} submitForm={handleSubmit}/>}></Route>
+            <Route path="/confirmation" element={<ConfirmedBooking/>}></Route>
             <Route path="/order" element={<OrderOnline/>}></Route>
           </Routes>
         </LoginProvider>

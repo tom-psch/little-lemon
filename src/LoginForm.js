@@ -5,8 +5,6 @@ import { useState, useEffect } from "react";
 import { useLogin } from "./LoginContext";
 import close from "./components/assets/close.png";
 
-
-
 export default function LoginForm () {
 
 const {popup, setPopup} = useLogin();

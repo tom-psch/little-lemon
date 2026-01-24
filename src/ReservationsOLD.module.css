@@ -56,13 +56,13 @@
     height: 30px;
     align-self: center;
 }
-
+/* 
 button.disabled {
     background-color: grey;
 }
 button.disabled:hover {
     pointer-events: none;
-}
+} */
 
 .main button:hover {
     cursor: pointer;
@@ -86,35 +86,33 @@ button.disabled:hover {
     padding: 5px;
 }
 
+.dateLabel {
+    margin: -5px 0 5px;
+}
+.timeLabel {
+    width: 70px;
+    margin: -5px 0 5px;
+
+}
+
+.timeSelect {
+    width: 70px;
+}
+
 main div.formSubmission {
     position: absolute;
     transform: translate(-50%,-50%);
-    top: 50%;
+    top: 40%;
     left: 50%;
     border-radius: 16px;
     background-color: #F4CE14;
-    width: 280px;
+    width: 300px;
     height: 100px;
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: space-around; */
-    /* align-items: center;  */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: Karla;
     color: #333333;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
-}
-
-.formSubmission img {
-    width: 15px;
-    justify-self: flex-end;
-    padding: 12px;
-    display: block;
-}
-.formSubmission img:hover {
-    cursor: pointer;
-}
-
-.formSubmission p {
-    justify-self: center;
 }
