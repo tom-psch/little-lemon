@@ -28,7 +28,7 @@ var dishes = [{
 const {popup} = useLogin();
 
     return (
-        <main className={popup ? `${classes.main} blurred` : classes.main}>
+        <main className={popup ? `${classes.main} blurred` : classes.main} inert={popup}>
             <article className={classes.landing}>
                 <section className={classes.reservation}>
                     <div className={classes.mainHeader}>

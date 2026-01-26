@@ -16,12 +16,12 @@ const loginClick = (e) => {
 const handleHome = () => window.scrollTo({top:0,behavior:"smooth"});
 
     return (
-        <footer className={popup ? "blurred" : ""}>
+        <footer className={popup ? "blurred" : ""} inert={popup}>
             <section className={classes.footer}>
                 <img className={classes.footerPic} src={footerPic} alt="Mario and Adrian in Little Lemon's kitchen"></img>
                 <div className={classes.footerRight}>
                     <div className={classes.doormatNav}>
-                        <h4 className={classes.title}>Little Lemon</h4>
+                        <h1 className={classes.title}>Little Lemon</h1>
                         <ul>
                             <li><HashLink to="/" onClick={handleHome}>Home</HashLink></li>
                             <li><HashLink smooth to="/#about">About</HashLink></li>
@@ -32,7 +32,7 @@ const handleHome = () => window.scrollTo({top:0,behavior:"smooth"});
                         </ul>
                     </div>
                     <div className={classes.contactFooter}>
-                        <h4 className={classes.title}>Contact</h4>
+                        <h1 className={classes.title}>Contact</h1>
                         <div className={classes.middleContainer}>
                             <p>328 Little Lemon St.,<br/> Chicago, Illinois</p>
                             <Link to="tel:+13124827691">(312) 482 - 7961</Link>
@@ -40,7 +40,7 @@ const handleHome = () => window.scrollTo({top:0,behavior:"smooth"});
                         </div>
                     </div>
                     <div className={classes.socialsFooter}>
-                        <h4 className={classes.title}>Social Media</h4>
+                        <h1 className={classes.title}>Social Media</h1>
                         <ul id={classes.socials}>
                             <li><Link to={{ pathname: "https://facebook.com/" }} target="_blank">Facebook</Link></li>
                             <li><Link to={{ pathname: "https://instagram.com/" }} target="_blank">Instagram</Link></li>

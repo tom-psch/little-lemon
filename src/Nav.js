@@ -41,7 +41,7 @@ export default function Nav () {
                     <li><NavLink to="/" onClick={loginClick}>Login</NavLink></li>
                 </ul>
             </nav>
-            <nav className={classes.smallSizeNav} onVolumeChange={handleClick}>
+            <nav className={classes.smallSizeNav} onVolumeChange={handleClick} aria-label="Open navigation links" >
                 <img src={burguer} alt="Hamburguer navigation-bar icon" className={`${classes.burguer} ${classes[nav]}`} onClick={handleClick}></img>
             {nav ?
                 <ul className={`${classes.smallNavBar} ${classes[nav ? "open" : "close"]}`}>

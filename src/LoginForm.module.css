@@ -52,8 +52,11 @@
     cursor: pointer;
 }
 
-.formType:hover {
-    cursor: pointer;
+#loginBox button.disabled {
+    background-color: grey;
+}
+#loginBox button.disabled:hover {
+    pointer-events: none;
 }
 
 #loginBox form {
@@ -64,4 +67,14 @@
 
 #loginBox form > * {
     padding: 5px 0;
+}
+
+
+.formType {
+    text-decoration-color: transparent;
+    transition: text-decoration 0.5s;
+}
+
+.formType:hover{
+    text-decoration: underline #F4CE14;
 }

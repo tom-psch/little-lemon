@@ -1,18 +1,21 @@
 import classes from "./LoginForm.module.css";
-import { object, string, number, date, InferType } from 'yup';
+import { object, string } from 'yup';
 import { useFormik } from "formik";
 import { useState, useEffect } from "react";
 import { useLogin } from "./LoginContext";
 import close from "./components/assets/close.png";
+import { useLocation } from "react-router";
+import { Link } from "react-router";
 
 export default function LoginForm () {
 
 const {popup, setPopup} = useLogin();
 const [width,setWidth] = useState(window.innerWidth);
+const location = useLocation();
 
 useEffect (() => {
         const handleResize = () => {
-            if (window.innerWidth != width) {
+            if (window.innerWidth !== width) {
                 setPopup(false);
                 setWidth(window.innerWidth);
             }
@@ -21,15 +24,17 @@ useEffect (() => {
         return () => {
      window.removeEventListener("resize", handleResize);
    };
-    }, []);
+    }, [width]);
 
 const formik = useFormik({
 initialValues: {
     email: "",
     password: "",
   },
-onSubmit: values => {
-    console.log("Form submitted");
+onSubmit: async values => {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    alert("Form submitted");
+    setPopup(false);
     // alert(JSON.stringify(values, null, 2));
   },
 validationSchema: object({
@@ -45,8 +50,10 @@ initialValues: {
     phone: "",
     password: "",
   },
-onSubmit: values => {
-    console.log("Account created");
+onSubmit: async values => {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    alert("Account created");
+    setPopup(false);
     // alert(JSON.stringify(values, null, 2));
   },
 validationSchema: object({
@@ -58,14 +65,21 @@ validationSchema: object({
 });
 
 const [formType, setFormType] = useState("login");
-const handleClick = () => setPopup(false);
-// console.log(formType);
+const handleClick = (e) => {
+    e.preventDefault();
+    setPopup(false);
+}
+const handleLoginType = (e) => {
+    e.preventDefault();
+    formType === "login" ? setFormType("newAccount") : setFormType("login");
+
+}
 
     return (
         <div id={classes.loginBox}>
-            {formType == "login" ? <>
+            {formType === "login" ? <>
             <h1 className={classes.formTitle}>Login</h1>
-            <img src={close} className={classes.close} onClick={handleClick}></img>
+            <Link to={location} aria-label="Click to close login dialog" onClick={handleClick}><img src={close} className={classes.close} alt="A cross to close the popup"></img></Link>
             <form onSubmit={formik.handleSubmit}>
                 <label htmlFor="email">Email Address</label>
                 <input
@@ -81,12 +95,13 @@ const handleClick = () => setPopup(false);
                     {...formik.getFieldProps("password")}
                 />
                 {formik.touched.password && formik.errors.password ? <p className={classes.errors}>{formik.errors.password}</p> : <></>}
-                <button type="submit">Submit</button>
+                <button type="submit" disabled={!formik.isValid || formik.isSubmitting || !formik.dirty }
+                className={(!formik.isValid || formik.isSubmitting || !formik.dirty) ? classes.disabled : ""}>Submit</button>
             </form></>
             :
             <>
             <h1 className={classes.formTitle}>Create account</h1>
-            <img src={close} className={classes.close} onClick={handleClick}></img>
+            <Link to={location} aria-label="Click to close login dialog"><img src={close} className={classes.close} onClick={handleClick} aria-label="Close login popup"></img></Link>
             <form onSubmit={formikNew.handleSubmit}>
                 <label htmlFor="email">Email Address</label>
                 <input
@@ -116,10 +131,11 @@ const handleClick = () => setPopup(false);
                     {...formikNew.getFieldProps("password")}
                 />
                 {formikNew.touched.password && formikNew.errors.password ? <p className={classes.errors}>{formikNew.errors.password}</p> : <></>}
-                <button type="submit">Submit</button>
+                <button type="submit" disabled={!formikNew.isValid || formikNew.isSubmitting || !formikNew.dirty }
+                className={(!formikNew.isValid || formikNew.isSubmitting || !formikNew.dirty) ? classes.disabled : ""}>Submit</button>
             </form>
             </>}
-            {formType == "login" ? <p onClick={() => setFormType("newAccount")} className={classes.formType}>Don't have an account? Register</p> : <p className={classes.formType} onClick={() => setFormType("login")}>Have an account? Login</p>}
+            <Link to={location} onClick={handleLoginType} className={classes.formType}><p>{formType === "login" ? "Don't have an account? Register" : "Have an account? Login"}</p></Link>
         </div>
     )
 }

@@ -32,18 +32,20 @@
 }
 
 .orderOnline {
-    font-family: Markazi Text;
+   
+    margin: 20px 20px;
+}
+.orderOnline a {
+    text-decoration-color: transparent;
+    transition: text-decoration 0.5s;
+     font-family: Markazi Text;
     font-size: 15px;
     color: #FFFFFF;
     font-weight: normal;
-    margin: 20px 20px;
-}
-.orderOnline h2 {
-    text-decoration-color: transparent;
-    transition: text-decoration 0.5s;
 }
 
-.main h2:hover{
+.main a:hover{
     text-decoration: underline #F4CE14;
 }
+
 

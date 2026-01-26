@@ -36,7 +36,12 @@ aside {
     line-height: 1;
 }
 .aboutH2 {
-    color: #EE9972;
+    color: #F4CE14;
+    text-shadow: 1px 1px 1px #495E57,
+                 -1px -1px 1px #495E57,
+                 1px -1px 1px #495E57,
+                 -1px 1px 1px #495E57;
+
     font-family: "Markazi Text";
     font-size: 40px;
     font-weight: 400;

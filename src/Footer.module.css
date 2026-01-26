@@ -38,7 +38,7 @@
 
     }
 
-    footer h4, footer a, footer p, footer li {
+    footer h1, footer a, footer p, footer li {
         color: #EDEFEE;
         font-family: Karla;
         font-size: 20px;
@@ -112,7 +112,7 @@
 
     }
 
-    footer h4, footer a, footer p, footer li {
+    footer h1, footer a, footer p, footer li {
         color: #EDEFEE;
         font-family: Karla;
         font-size: clamp(10px, 4vw, 20px);

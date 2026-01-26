@@ -16,7 +16,7 @@ const handleHome = () => window.scrollTo({top:0,behavior:"smooth"});
             <Nav />
         </header>
         {useLocation().pathname==="/" &&
-            <NavLink to="/" onClick={handleHome}>
+            <NavLink to="/" onClick={handleHome} aria-label="Click to go back to top" tabIndex="-1">
                 <img src={arrow} className={inView ? `${classes.backToTop} ${classes.hidden}` : `${classes.backToTop} ${classes.shown}`} alt="Back to top arrow"/>
             </NavLink>
         }

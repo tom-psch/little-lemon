@@ -9,7 +9,7 @@ import '@testing-library/jest-dom';
 
 // global.TextEncoder = TextEncoder;
 
-/* TODO LO DE ACÄ ABAJO TAMBIEN Y FUNCIONÓ*/
+/* TODO LO DE ACÁ ABAJO TAMBIEN Y FUNCIONÓ*/
 
 import { TextEncoder, TextDecoder } from 'util'; // Use 'node:util' in newer Node versions
 
@@ -30,3 +30,7 @@ beforeEach(() => {
   });
   window.IntersectionObserver = mockIntersectionObserver;
 });
+
+// import { configure } from '@testing-library/react';
+
+// configure({computedStyleSupportsPseudoElements: true});

@@ -55,7 +55,7 @@ export default function Aside () {
     const handleReadMore = () => setExpand(true);
 
         return (
-            <aside className={popup ? "blurred" : ""}>
+            <aside className={popup ? "blurred" : ""} inert={popup}>
                 <section className={classes.testimonials}>
                     <h2>Testimonials</h2>
                     <div className={classes.testimonialCards}>

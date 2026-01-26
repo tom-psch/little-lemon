@@ -14,11 +14,9 @@ export const initializeTimes = () => fetchAPI(new Date());
 export function updateTimes (state, action) {
   switch (action.type) {
     case "selected_day": {
-      console.log("new day selected")
       return fetchAPI(action.day);
     }
     case "erased_day": {
-      console.log("erased day")
       return "";
     }
     default: {

@@ -9,7 +9,7 @@ export default function DishCard (props) {
             <h2>{props.item.title}</h2>
             <h3>{props.item.price}</h3>
             <h4>{props.item.desc}</h4>
-            <div className={classes.order}>
+            <div className={classes.order} aria-label="Click to order online" tabIndex="0">
                 <p>Order a delivery</p>
                 <img className={classes.bell} src={bell} alt="An icon of a bell"></img>
             </div>

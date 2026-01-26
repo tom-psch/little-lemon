@@ -14,7 +14,7 @@ export default function RankCard (props) {
             <div className={classes.rating}>
                 {stars}
             </div>
-            <img className={classes.pic} src={require(`./components/assets/${a}`)} alt={"A picture of a cutomer"}></img>
+            <img className={classes.pic} src={require(`./components/assets/${a}`)} alt={"A customer"}></img>
             <h3 className={classes.name}>{props.person.name}</h3>
             <h4 className={classes.user}>{props.person.user}</h4>
             <p className={classes.text}>{props.person.text}</p>
