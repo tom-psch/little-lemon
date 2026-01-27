@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Reservation from "./Reservation";
+import Reservation from "./BookingForm";
 import { LoginProvider } from './LoginContext';
 import userEvent from "@testing-library/user-event";
 import { act } from "@testing-library/react";

@@ -1,4 +1,4 @@
-import classes from "./Reservations.module.css"
+import classes from "./BookingForm.module.css"
 import close from "./components/assets/close.png";
 import { Link } from "react-router";
 import { useLogin } from "./LoginContext";

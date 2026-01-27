@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './Header';
 import Home from './Home';
-import Reservation from './Reservation';
+import Reservation from './BookingForm';
 import OrderOnline from './OrderOnline';
 import ConfirmedBooking from './ConfirmedBooking';
 import { useReducer} from 'react';

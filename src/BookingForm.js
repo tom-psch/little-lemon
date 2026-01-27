@@ -1,4 +1,4 @@
-import classes from "./Reservations.module.css"
+import classes from "./BookingForm.module.css"
 import { object, string, number, date } from 'yup';
 import { useFormik } from "formik";
 import { useLogin } from "./LoginContext";
