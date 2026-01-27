@@ -53,6 +53,7 @@ export default function Aside () {
     },[expand]);
 
     const handleReadMore = () => setExpand(true);
+    const handleEnter = (e) => e.key === "Enter" && setExpand(true);
 
         return (
             <aside className={popup ? "blurred" : ""} inert={popup}>
@@ -76,7 +77,7 @@ export default function Aside () {
                         {!expand ? <>
                         <p className={classes.aboutPSmall} id={classes.aboutPSmall}>Little Lemon is owned by two Italian brothers, Mario and Adrian,
                             who moved to the United States to pursue their shared dream of opening a restaurant.</p>
-                        <p className={classes.readMore} id={classes.readMore} onClick={handleReadMore}>Read more...</p>
+                        <p className={classes.readMore} id={classes.readMore} onClick={handleReadMore} tabIndex={0} onKeyDown={handleEnter}>Read more...</p>
                         </>
                         :
                         <p className={classes.aboutPSmall} id={classes.aboutPSmall}>Little Lemon is owned by two Italian brothers, Mario and Adrian,

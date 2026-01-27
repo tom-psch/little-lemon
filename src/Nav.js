@@ -27,6 +27,7 @@ export default function Nav () {
         setPopup();
         handleClick();
     }
+    const handleEnter = (e) => e.key === "Enter" && setNav(!nav);
 
     return (
         <>
@@ -41,10 +42,10 @@ export default function Nav () {
                     <li><NavLink to="/" onClick={loginClick}>Login</NavLink></li>
                 </ul>
             </nav>
-            <nav className={classes.smallSizeNav} onVolumeChange={handleClick} aria-label="Open navigation links" >
-                <img src={burguer} alt="Hamburguer navigation-bar icon" className={`${classes.burguer} ${classes[nav]}`} onClick={handleClick}></img>
+            <nav className={classes.smallSizeNav} onVolumeChange={handleClick} >
+                <img src={burguer} tabIndex={0} onKeyDown={handleEnter} aria-label="Navigation links" aria-expanded={nav} aria-controls="nav-menu" alt="Hamburguer navigation-bar icon" className={`${classes.burguer} ${classes[nav]}`} onClick={handleClick}></img>
             {nav ?
-                <ul className={`${classes.smallNavBar} ${classes[nav ? "open" : "close"]}`}>
+                <ul className={`${classes.smallNavBar} ${classes[nav ? "open" : "close"]}`} id="nav-menu">
                     <li><NavLink to="/" onClick={handleClick}>Home</NavLink></li>
                     <li><HashLink smooth to="/#about">About</HashLink></li>
                     <li><HashLink smooth to="/#menu">Menu</HashLink></li>

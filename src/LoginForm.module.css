@@ -78,3 +78,7 @@
 .formType:hover{
     text-decoration: underline #F4CE14;
 }
+
+#loginBox input {
+    padding: 4px;
+}

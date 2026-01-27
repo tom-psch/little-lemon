@@ -2,6 +2,7 @@ import DishCard from "./DishCard";
 import landingPic from "./components/assets/restauranfood.jpg";
 import classes from './Main.module.css';
 import { useLogin } from "./LoginContext";
+import { Link } from "react-router";
 
 export default function Main () {
 
@@ -36,14 +37,14 @@ const {popup} = useLogin();
                         <h2>Chicago</h2>
                     </div>
                     <p>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
-                    <button>Reserve a Table</button>
+                    <Link to="/reservation"><button tabIndex={-1}>Reserve a Table</button></Link>
                 </section>
             </article>
             <img className={classes.landingPic} alt="A waitress serving bruchetta" src={landingPic}></img>
             <article className={classes.specials}>
                 <section className={classes.specialsToMenu}>
                     <h1 id="menu">This week's specials!</h1>
-                    <button>Online Menu</button>
+                    <Link to="/order" tabIndex={-1}><button>Online Menu</button></Link>
                 </section>
                 <section className={classes.specialsCards}>
                     <DishCard item={dishes[0]}/>

@@ -32,6 +32,7 @@
     font-family: Karla;
     font-size: 16px;
     font-weight: 700;
+    color: #333333;
 }
 .specialCard h3  {
     grid-column: 2 / span 1;
@@ -67,12 +68,13 @@
     box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.20);
 }
 
-.order:hover{
-    cursor: pointer;
-
+.order {
+    text-decoration-color: transparent;
+    transition: text-decoration 0.5s;
 }
-.order *:hover {
-    text-decoration: underline;
+
+.order:hover {
+    text-decoration: underline #F4CE14;
 }
 .bell {
     width: 25px;
