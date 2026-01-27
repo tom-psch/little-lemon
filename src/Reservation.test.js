@@ -142,7 +142,7 @@ test("JavaScript form validations", async () => {
         userEvent.click(phone); //clicking in other field
         userEvent.click(cancel); //Unconfirm agreement
     });
-    const error4 = screen.getByText(/required time/i);
+    const error4 = screen.getByText(/select time/i);
     const error5 = screen.getByText(/more than 6 guests/i);
     const error6 = screen.getByText(/agree to continue/i);
 

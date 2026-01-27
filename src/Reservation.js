@@ -39,8 +39,8 @@ initialValues: {
   },
 onSubmit: submitForm,
 validationSchema: object({
-    daySel: date().required("Required").min(new Date().toISOString().split('T')[0], "Invalid day"),
-    timeSel: string().required("Required time"), //.test({name:"Can't be default", message: "Requireds", test: (value) => value!=""}),
+    daySel: date().required("Select day").min(new Date().toISOString().split('T')[0], "Invalid day"),
+    timeSel: string().required("Select time"), //.test({name:"Can't be default", message: "Requireds", test: (value) => value!=""}),
     name: string().min(3, "Please input at least 3 characters").required("Required").matches(/^[^0-9]+$/, "Numbers are not allowed in this field"),
     phone: string().matches(phoneRegExp, 'Phone number is not valid').required("Required"),
     occasion: string().required("Required"),
@@ -64,6 +64,8 @@ validationSchema: object({
 
                  <fieldset className={classes.dateTime}>
                     <legend>When are you coming?</legend>
+                    <label htmlFor="daySel" className={classes.dayLabel}>Day</label>
+                    <label htmlFor="timeSel" className={classes.timeLabel}>Time</label>
                     <input type="date" id="daySel" data-testid="daySel" {...formik.getFieldProps('daySel')} min={new Date().toISOString().split('T')[0]} onChange={handleDaySelection} className={classes.daySelect} required>
                     </input>
                     <select id="timeSel" className={classes.timeSelect} data-testid="timeSel"{...formik.getFieldProps('timeSel')} required>
