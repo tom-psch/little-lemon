@@ -24,7 +24,7 @@ beforeEach(()=>{
 test("updateTimes reducer-function returns array with available times for the selected day", () => {
   expect(updateTimes(testingArray,
 { type: "selected_day",
-  day: new Date().toISOString().split('T')[0],
+  day: new Date(),
 })).toBeInstanceOf(Array);
 });
 

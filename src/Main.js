@@ -44,7 +44,7 @@ const {popup} = useLogin();
             <article className={classes.specials}>
                 <section className={classes.specialsToMenu}>
                     <h1 id="menu">This week's specials!</h1>
-                    <Link to="/order" tabIndex={-1}><button>Online Menu</button></Link>
+                    <Link to="/order"           tabIndex={-1}><button>Online Menu</button></Link>
                 </section>
                 <section className={classes.specialsCards}>
                     <DishCard item={dishes[0]}/>

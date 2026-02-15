@@ -1,10 +1,10 @@
 import './App.css';
 import Header from './Header';
 import Home from './Home';
-import Reservation from './BookingForm';
+import BookingForm from './BookingForm';
 import OrderOnline from './OrderOnline';
 import ConfirmedBooking from './ConfirmedBooking';
-import { useReducer} from 'react';
+import { useReducer } from 'react';
 import { Routes, Route, useLocation, useNavigate } from "react-router";
 import { LoginProvider } from './LoginContext';
 import { fetchAPI, submitAPI } from './api/bookingApi';
@@ -12,17 +12,17 @@ import { fetchAPI, submitAPI } from './api/bookingApi';
 export const initializeTimes = () => fetchAPI(new Date());
 
 export function updateTimes (state, action) {
-  switch (action.type) {
-    case "selected_day": {
-      return fetchAPI(action.day);
+    switch (action.type) {
+      case "selected_day": {
+        return fetchAPI(action.day);
+      }
+      case "erased_day": {
+        return "";
+      }
+      default: {
+        console.log("No action provided");
+      }
     }
-    case "erased_day": {
-      return "";
-    }
-    default: {
-      console.log("No action provided");
-    }
-  }
 };
 function App() {
   const [state, dispatch] = useReducer(updateTimes,initializeTimes());
@@ -42,7 +42,7 @@ function App() {
           <Header/>
           <Routes>
             <Route path="/" element={<Home/>}></Route>
-            <Route path="/reservation" element={<Reservation availableTimes={state} dispatch={dispatch} submitForm={handleSubmit}/>}></Route>
+            <Route path="/reservation" element={<BookingForm availableTimes={state} dispatch={dispatch} submitForm={handleSubmit}/>}></Route>
             <Route path="/confirmation" element={<ConfirmedBooking/>}></Route>
             <Route path="/order" element={<OrderOnline/>}></Route>
           </Routes>

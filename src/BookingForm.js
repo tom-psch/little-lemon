@@ -3,7 +3,7 @@ import { object, string, number, date } from 'yup';
 import { useFormik } from "formik";
 import { useLogin } from "./LoginContext";
 
-export default function Reservation ({availableTimes, dispatch, submitForm}) {
+export default function BookingForm ({availableTimes, dispatch, submitForm}) {
 const {popup} = useLogin();
 const phoneRegExp = /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
 
@@ -19,7 +19,7 @@ function handleDaySelection (e) {
     else {
         dispatch({
             type: "selected_day",
-            day: e.target.value,
+            day: new Date(e.target.value),
         });
         formik.setFieldValue("timeSel","");
         formik.setFieldTouched("timeSel", false)
