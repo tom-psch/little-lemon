@@ -54,7 +54,7 @@ validationSchema: object({
             <h1>Reserve a table</h1>
             {/* onSubmit={formik.handleSubmit}  */}
             
-            <form name="booking" className={classes.reservationForm} method="POST" data-netlify="true">
+            <form name="booking" className={classes.reservationForm} method="POST" data-netlify="true" action="/confirmation">
                 <input type="hidden" name="form-name" value="booking" />
                 <label htmlFor="name">Name</label>
                 <input id="name" type="text" {...formik.getFieldProps('name')} required minLength="3"></input>
@@ -97,6 +97,7 @@ validationSchema: object({
                     <input id="cancel" type="checkbox" checked={formik.values.cancel} {...formik.getFieldProps('cancel')} required className={classes.cancel}></input>
                     {formik.touched.cancel && formik.errors.cancel ? <p className={classes.errors}>{formik.errors.cancel}</p> : <></>}
                 </div>
+                <div data-netlify-recaptcha="true"></div>
 
                 <button type="submit" disabled={!formik.isValid || formik.isSubmitting || !formik.dirty }
                 className={(!formik.isValid || formik.isSubmitting || !formik.dirty) ? classes.disabled : ""}
