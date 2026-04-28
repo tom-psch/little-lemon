@@ -54,7 +54,7 @@ validationSchema: object({
             <h1>Reserve a table</h1>
             {/* onSubmit={formik.handleSubmit}  */}
             
-            <form name="booking" className={classes.reservationForm} method="POST" data-netlify="true" action="/confirmation">
+            <form data-netlify-recaptcha="true" name="booking" className={classes.reservationForm} method="POST" data-netlify="true" action="/confirmation">
                 <input type="hidden" name="form-name" value="booking" />
                 <label htmlFor="name">Name</label>
                 <input id="name" type="text" {...formik.getFieldProps('name')} required minLength="3"></input>
