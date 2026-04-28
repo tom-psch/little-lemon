@@ -37,7 +37,7 @@ initialValues: {
     people: "1",
     cancel: false,
   },
-onSubmit: submitForm,
+// onSubmit: submitForm,
 validationSchema: object({
     daySel: date().required("Select day").min(new Date().toISOString().split('T')[0], "Invalid day"),
     timeSel: string().required("Select time"), //.test({name:"Can't be default", message: "Requireds", test: (value) => value!=""}),
