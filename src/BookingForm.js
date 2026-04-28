@@ -53,8 +53,9 @@ validationSchema: object({
         <main className={!popup ? classes.main : `${classes.main} blurred`} inert={popup}>
             <h1>Reserve a table</h1>
             {/* onSubmit={formik.handleSubmit}  */}
-            <form name="booking" className={classes.reservationForm} method="POST" data-netlify="true">
-
+            
+            <form onSubmit="submit" name="booking" className={classes.reservationForm} method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="booking" />
                 <label htmlFor="name">Name</label>
                 <input id="name" type="text" {...formik.getFieldProps('name')} required minLength="3"></input>
                 {formik.touched.name && formik.errors.name ? <p className={classes.errors}>{formik.errors.name}</p> : <></>}
