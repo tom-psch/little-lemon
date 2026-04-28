@@ -37,7 +37,7 @@ initialValues: {
     people: "1",
     cancel: false,
   },
-// onSubmit: submitForm,
+onSubmit: submitForm,
 validationSchema: object({
     daySel: date().required("Select day").min(new Date().toISOString().split('T')[0], "Invalid day"),
     timeSel: string().required("Select time"), //.test({name:"Can't be default", message: "Requireds", test: (value) => value!=""}),
@@ -52,7 +52,8 @@ validationSchema: object({
     return (
         <main className={!popup ? classes.main : `${classes.main} blurred`} inert={popup}>
             <h1>Reserve a table</h1>
-            <form name="booking" className={classes.reservationForm} onSubmit={formik.handleSubmit} method="POST" data-netlify="true">
+            {/* onSubmit={formik.handleSubmit}  */}
+            <form name="booking" className={classes.reservationForm} method="POST" data-netlify="true">
 
                 <label htmlFor="name">Name</label>
                 <input id="name" type="text" {...formik.getFieldProps('name')} required minLength="3"></input>
