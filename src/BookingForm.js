@@ -52,7 +52,7 @@ validationSchema: object({
     return (
         <main className={!popup ? classes.main : `${classes.main} blurred`} inert={popup}>
             <h1>Reserve a table</h1>
-            <form className={classes.reservationForm} onSubmit={formik.handleSubmit}>
+            <form className={classes.reservationForm} onSubmit={formik.handleSubmit} method="POST" data-netlify="true">
 
                 <label htmlFor="name">Name</label>
                 <input id="name" type="text" {...formik.getFieldProps('name')} required minLength="3"></input>
