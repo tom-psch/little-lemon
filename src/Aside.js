@@ -1,19 +1,19 @@
 import RankCard from "./RankCard"
 import classes from "./Aside.module.css"
 import pic1 from "./components/assets/restaurant.jpg"
-import pic2 from "./components/assets/restaurant chef B.jpg"
+import pic2 from "./components/assets/restaurant chef B.webp"
 import { useLogin } from "./LoginContext"
 import { useState, useEffect, useRef} from "react";
 
 const reviews = [{
-    img: "joseph.jpg",
+    img: "joseph.webp",
     name: "Joseph G.",
     user: "JojoGH.87",
     text: "“Such a chilled out atmosphere - love it!”",
     stars: 5
 },
 {
-    img: "reza.jpg",
+    img: "reza.webp",
     name: "Reza B.",
     user: "BranxReza",
     text: "“We had such a great time celebrating my grandmothers bitthday!”",
@@ -27,7 +27,7 @@ const reviews = [{
     stars: 5
 },
 {
-    img: "Danielle.jpg",
+    img: "Danielle.webp",
     name: "Danielle W.",
     user: "Dani_wills",
     text: "“Best Feta Salad in town. Flawless everytime!”",

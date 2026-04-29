@@ -9,19 +9,17 @@ import { useNavigate } from "react-router";
 export default function BookingForm ({availableTimes, dispatch, submitForm}) {
     const navigate = useNavigate();
     const handleNetlifySubmit = e => {
-    e.preventDefault();
-
-    const myForm = e.target;
-    const formData = new FormData(myForm);
-
-    fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString()
-    })
-    .then(() => navigate("/confirmation"))
-    .catch(error => alert(error));
-};
+        e.preventDefault();
+        const myForm = e.target;
+        const formData = new FormData(myForm);
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString()
+        })
+        .then(() => navigate("/confirmation"))
+        .catch(error => alert(error));
+    };
     const {popup} = useLogin();
     const phoneRegExp = /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
 

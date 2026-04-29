@@ -1,5 +1,5 @@
 import DishCard from "./DishCard";
-import landingPic from "./components/assets/restauranfood.jpg";
+import landingPic from "./components/assets/restauranfood.webp";
 import classes from './Main.module.css';
 import { useLogin } from "./LoginContext";
 import { Link } from "react-router";
@@ -7,13 +7,13 @@ import { Link } from "react-router";
 export default function Main () {
 
 var dishes = [{
-    pic: "greek salad.jpg",
+    pic: "greek salad.webp",
     title: "Greek salad",
     price: "$12.99",
     desc: "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.",
     link: "https://www.google.com"
 },{
-    pic: "bruchetta.svg",
+    pic: "bruchetta.webp",
     title: "Bruchetta",
     price: "$5.99",
     desc: "Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.",

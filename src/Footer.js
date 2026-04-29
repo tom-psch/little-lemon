@@ -1,5 +1,5 @@
 import classes from "./Footer.module.css"
-import footerPic from "./components/assets/Mario and Adrian A.jpg"
+import footerPic from "./components/assets/Mario and Adrian A.webp"
 import { useLogin } from "./LoginContext";
 import { NavLink, Link } from "react-router";
 import { HashLink } from "react-router-hash-link";
