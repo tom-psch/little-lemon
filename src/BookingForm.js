@@ -70,8 +70,13 @@ export default function BookingForm ({availableTimes, dispatch, submitForm}) {
             <h1>Reserve a table</h1>
             {/* onSubmit={formik.handleSubmit} 
             method="POST" action="/confirmation"*/}
-            <form name="booking" onSubmit={handleNetlifySubmit} className={classes.reservationForm} data-netlify="true" >
+            <form netlify-honeypot="bot-field" name="booking" onSubmit={handleNetlifySubmit} className={classes.reservationForm} data-netlify="true" >
                 <input type="hidden" name="form-name" value="booking" />
+                <p className={classes.hidden}>
+                    <label>
+                    Don not fill this out if you are human: <input name="bot-field" type="text" />
+                    </label>
+                </p>
                 <label htmlFor="name">Name</label>
                 <input id="name" type="text" {...formik.getFieldProps('name')} required minLength="3"></input>
                 {formik.touched.name && formik.errors.name ? <p className={classes.errors}>{formik.errors.name}</p> : <></>}

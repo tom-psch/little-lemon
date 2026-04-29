@@ -170,3 +170,6 @@ main div.formSubmission {
     margin: 15px 0 0;
     grid-row: 2;
 }
+.hidden {
+    display: none;
+}

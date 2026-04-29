@@ -45,7 +45,8 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!-- action="/confirmation" -->
-    <form name="booking" data-netlify="true" hidden>
+    <form name="booking" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" type="text" />
       <input type="text" name="name"></input>
       <input type="text" name="phone"></input>
       <input type="date" name="daySel"></input>
