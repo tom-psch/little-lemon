@@ -2,58 +2,77 @@ import classes from "./BookingForm.module.css"
 import { object, string, number, date } from 'yup';
 import { useFormik } from "formik";
 import { useLogin } from "./LoginContext";
+import { useNavigate } from "react-router";
+
+
 
 export default function BookingForm ({availableTimes, dispatch, submitForm}) {
-const {popup} = useLogin();
-const phoneRegExp = /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
+    const navigate = useNavigate();
+    const handleNetlifySubmit = e => {
+    e.preventDefault();
 
-const selectedDay = new Date().toISOString().split('T')[0];
+    const myForm = e.target;
+    const formData = new FormData(myForm);
 
-function handleDaySelection (e) {
-    formik.handleChange(e);
-    if (e.target.value === "") {
-        dispatch({
-            type: "erased_day",
-        });
+    fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString()
+    })
+    .then(() => navigate("/confirmation"))
+    .catch(error => alert(error));
+};
+    const {popup} = useLogin();
+    const phoneRegExp = /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
+
+    const selectedDay = new Date().toISOString().split('T')[0];
+
+    function handleDaySelection (e) {
+        formik.handleChange(e);
+        if (e.target.value === "") {
+            dispatch({
+                type: "erased_day",
+            });
+        }
+        else {
+            dispatch({
+                type: "selected_day",
+                day: new Date(e.target.value),
+            });
+            formik.setFieldValue("timeSel","");
+            formik.setFieldTouched("timeSel", false)
+            formik.setFieldError("timeSel", false)
+        }
     }
-    else {
-        dispatch({
-            type: "selected_day",
-            day: new Date(e.target.value),
-        });
-        formik.setFieldValue("timeSel","");
-        formik.setFieldTouched("timeSel", false)
-        formik.setFieldError("timeSel", false)
-    }
-}
 
-const formik = useFormik({
-initialValues: {
-    daySel: selectedDay,
-    timeSel: "",
-    name: "",
-    phone: "",
-    occasion: "",
-    people: "1",
-    cancel: false,
-  },
-onSubmit: submitForm,
-validationSchema: object({
-    daySel: date().required("Select day").min(new Date().toISOString().split('T')[0], "Invalid day"),
-    timeSel: string().required("Select time"), //.test({name:"Can't be default", message: "Requireds", test: (value) => value!=""}),
-    name: string().min(3, "Please input at least 3 characters").required("Required").matches(/^[^0-9]+$/, "Numbers are not allowed in this field"),
-    phone: string().matches(phoneRegExp, 'Phone number is not valid').required("Required"),
-    occasion: string().required("Required"),
-    people: number().required("Required").min(1,"One guest minimun").max(6,"More than 6 guests? Contact us!"),
-    cancel: string().required().oneOf(["true"],"Please agree to continue"),
-  }),
-});
+    const formik = useFormik({
+    initialValues: {
+        daySel: selectedDay,
+        timeSel: "",
+        name: "",
+        phone: "",
+        occasion: "",
+        people: "1",
+        cancel: false,
+    },
+    onSubmit: submitForm,
+    validationSchema: object({
+        daySel: date().required("Select day").min(new Date().toISOString().split('T')[0], "Invalid day"),
+        timeSel: string().required("Select time"), //.test({name:"Can't be default", message: "Requireds", test: (value) => value!=""}),
+        name: string().min(3, "Please input at least 3 characters").required("Required").matches(/^[^0-9]+$/, "Numbers are not allowed in this field"),
+        phone: string().matches(phoneRegExp, 'Phone number is not valid').required("Required"),
+        occasion: string().required("Required"),
+        people: number().required("Required").min(1,"One guest minimun").max(6,"More than 6 guests? Contact us!"),
+        cancel: string().required().oneOf(["true"],"Please agree to continue"),
+    }),
+    });
 
     return (
         <main className={!popup ? classes.main : `${classes.main} blurred`} inert={popup}>
             <h1>Reserve a table</h1>
-            {/* onSubmit={formik.handleSubmit}  */}
-            <form name="booking" className={classes.reservationForm} method="POST" data-netlify="true" action="/confirmation">
+            {/* onSubmit={formik.handleSubmit} 
+            method="POST" action="/confirmation"*/}
+            <form name="booking" onSubmit={handleNetlifySubmit} className={classes.reservationForm} data-netlify="true" >
                 <input type="hidden" name="form-name" value="booking" />
                 <label htmlFor="name">Name</label>
                 <input id="name" type="text" {...formik.getFieldProps('name')} required minLength="3"></input>
