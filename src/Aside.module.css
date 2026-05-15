@@ -119,8 +119,8 @@ aside {
         z-index: 2;
     }
     .photos {
-        width: 276px;
-        height: 338px;
+        /* width: 276px;
+        height: 338px; */
         object-fit: cover;
         border-radius: 16px;
         box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.10);

@@ -7,7 +7,7 @@
     }
 
     .headerLogo {
-        height: 54px;
+        /* height: 54px; */
         justify-self: start;
         align-self: center;
         grid-column-start: 2;

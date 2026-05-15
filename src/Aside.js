@@ -1,33 +1,33 @@
 import RankCard from "./RankCard"
 import classes from "./Aside.module.css"
 import pic1 from "./components/assets/restaurant.jpg"
-import pic2 from "./components/assets/restaurant chef B.webp"
+import pic2 from "./components/assets/restaurant chef B2.jpeg"
 import { useLogin } from "./LoginContext"
 import { useState, useEffect, useRef} from "react";
 
 const reviews = [{
-    img: "joseph.webp",
+    img: "joseph2.jpeg",
     name: "Joseph G.",
     user: "JojoGH.87",
     text: "“Such a chilled out atmosphere - love it!”",
     stars: 5
 },
 {
-    img: "reza.webp",
+    img: "reza2.jpeg",
     name: "Reza B.",
     user: "BranxReza",
     text: "“We had such a great time celebrating my grandmothers bitthday!”",
     stars: 5
 },
 {
-    img: "Justin.jpg",
+    img: "Justin2.jpeg",
     name: "Justin S.",
     user: "Justin-2525",
     text: "“Seriously cannot stop thinking about the Turkish Mac n’ Cheese!!”",
     stars: 5
 },
 {
-    img: "Danielle.webp",
+    img: "Danielle2.jpeg",
     name: "Danielle W.",
     user: "Dani_wills",
     text: "“Best Feta Salad in town. Flawless everytime!”",
@@ -88,8 +88,8 @@ export default function Aside () {
                         }
                     </section>
                     <section className={classes.right}>
-                        <img src={pic1} className={`${classes.photos} ${classes.pic1}`} alt="Little Lemon's Deck"></img>
-                        <img src={pic2} className={`${classes.photos} ${classes.pic2}`} alt="Cooking chef"></img>
+                        <img width={276}  height={338} src={pic1} className={`${classes.photos} ${classes.pic1}`} alt="Little Lemon's Deck"></img>
+                        <img width={276}  height={338} src={pic2} className={`${classes.photos} ${classes.pic2}`} alt="Cooking chef"></img>
                     </section>
                 </section>
             </aside>

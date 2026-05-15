@@ -1,5 +1,5 @@
 import DishCard from "./DishCard";
-import landingPic from "./components/assets/restauranfood.webp";
+import landingPic from "./components/assets/restauranfood2.jpeg";
 import classes from './Main.module.css';
 import { useLogin } from "./LoginContext";
 import { Link } from "react-router";
@@ -7,7 +7,7 @@ import { Link } from "react-router";
 export default function Main () {
 
 var dishes = [{
-    pic: "greek salad.webp",
+    pic: "greek salad2.jpeg",
     title: "Greek salad",
     price: "$12.99",
     desc: "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.",
@@ -40,7 +40,7 @@ const {popup} = useLogin();
                     <Link to="/reservation"><button tabIndex={-1}>Reserve a Table</button></Link>
                 </section>
             </article>
-            <img className={classes.landingPic} alt="A waitress serving bruchetta" src={landingPic}></img>
+            <img width={375} height={429} className={classes.landingPic} alt="A waitress serving bruchetta" src={landingPic}></img>
             <article className={classes.specials}>
                 <section className={classes.specialsToMenu}>
                     <h1 id="menu">This week's specials!</h1>

@@ -5,7 +5,7 @@ export default function RankCard (props) {
     let stars= [];
     let i = props.person.stars;
     while (i >0 ) {
-        stars = [...stars,<img className={classes.star} src={star} key={i} alt="Ranking star"></img>];
+        stars = [...stars,<img width={20} height={20} className={classes.star} src={star} key={i} alt="Ranking star"></img>];
         i--;
     }
     let a = props.person.img;
@@ -14,7 +14,7 @@ export default function RankCard (props) {
             <div className={classes.rating}>
                 {stars}
             </div>
-            <img className={classes.pic} src={require(`./components/assets/${a}`)} alt={"A customer"}></img>
+            <img width={33} height={33} className={classes.pic} src={require(`./components/assets/${a}`)} alt={"A customer"}></img>
             <h3 className={classes.name}>{props.person.name}</h3>
             <h4 className={classes.user}>{props.person.user}</h4>
             <p className={classes.text}>{props.person.text}</p>

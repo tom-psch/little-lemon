@@ -64,8 +64,8 @@
         grid-column: 2 / 2;
         grid-row: 1 / span 2;
         justify-self: end;
-        width: 375px;
-        height: 429px;
+        /* width: 375px;
+        height: 429px; */
         object-fit: cover;
         border-radius: 16px;
         margin-top: 23px;
@@ -179,14 +179,14 @@
 
     .landingPic {
         display: none;
-        grid-column: 1;
+        /* grid-column: 1;
         grid-row: 1;
 
         width: 50vw;
         height: 406px;
         object-fit: cover;
         border-radius: 16px 0 0 16px;
-        justify-self: end;
+        justify-self: end; */
     }
 
     .specials {

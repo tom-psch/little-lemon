@@ -12,8 +12,8 @@
     transform: scale(1);
 }
 .dishPic {
-    width: 265px;
-    height: 185px;
+    /* width: 265px;
+    height: 185px; */
     object-fit: cover;
     border-radius: 16px 16px 0 0;
     grid-column: 1 / span 2;
@@ -76,9 +76,9 @@
 .order:hover {
     text-decoration: underline #F4CE14;
 }
-.bell {
+/* .bell {
     width: 25px;
-}
+} */
 
 
 

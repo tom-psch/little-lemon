@@ -17,8 +17,8 @@
     .footerPic {
         grid-column: 1 / span 1;
         grid-row: 1 / span 2;
-        width: 162px;
-        height: 279px;
+        /* width: 162px;
+        height: 279px; */
         object-fit: cover;
         object-position: 0px;
         border-radius: 16px;

@@ -12,7 +12,7 @@ const handleHome = () => window.scrollTo({top:0,behavior:"smooth"});
     return (
         <>
         <header ref={ref}>
-            <img className={classes.headerLogo} alt="Little Lemon's logo" src={logo}></img>
+            <img height={54} className={classes.headerLogo} alt="Little Lemon's logo" src={logo}></img>
             <Nav />
         </header>
         {useLocation().pathname==="/" &&

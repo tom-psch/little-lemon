@@ -1,5 +1,5 @@
 import classes from "./Footer.module.css"
-import footerPic from "./components/assets/Mario and Adrian A.webp"
+import footerPic from "./components/assets/Mario and Adrian A2.jpeg"
 import { useLogin } from "./LoginContext";
 import { NavLink, Link } from "react-router";
 import { HashLink } from "react-router-hash-link";
@@ -18,7 +18,7 @@ const handleHome = () => window.scrollTo({top:0,behavior:"smooth"});
     return (
         <footer className={popup ? "blurred" : ""} inert={popup}>
             <section className={classes.footer}>
-                <img className={classes.footerPic} src={footerPic} alt="Mario and Adrian in Little Lemon's kitchen"></img>
+                <img width={162} height={279} className={classes.footerPic} src={footerPic} alt="Mario and Adrian in Little Lemon's kitchen"></img>
                 <div className={classes.footerRight}>
                     <div className={classes.doormatNav}>
                         <h1 className={classes.title}>Little Lemon</h1>
